@@ -20,3 +20,6 @@
 .DS_Store
 next-env.d.ts
 *.tsbuildinfo
+
+# ruflo / claude-flow runtime state
+/.swarm/
