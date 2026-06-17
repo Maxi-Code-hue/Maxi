@@ -34,3 +34,6 @@ coffee-site/*.zip
 
 # villa-site render shots
 villa-site/shots/
+
+# atelier-site render shots
+atelier-site/shots/
