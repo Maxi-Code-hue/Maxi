@@ -27,3 +27,7 @@ next-env.d.ts
 # build/render artifacts
 swarm-site/preview.png
 swarm-site/*.zip
+
+# coffee-site render artifacts
+coffee-site/preview.png
+coffee-site/*.zip

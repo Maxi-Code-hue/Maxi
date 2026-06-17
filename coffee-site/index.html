@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAXI · SPECIALTY COFFEE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0603;
+    --amber:#f6a02a;
+    --orange:#ff7a2f;
+    --gold:#ffce7a;
+    --cream:#f3e3c8;
+    --ink:#f0ddc2;
+    --muted:#b69a7c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
+    font-family:'Sora',system-ui,sans-serif;}
+  #scene{position:fixed;inset:0;z-index:0;display:block;}
+
+  .fx{position:fixed;inset:0;z-index:1;pointer-events:none;}
+  .fx.vignette{background:radial-gradient(120% 100% at 50% 38%,transparent 52%,rgba(0,0,0,.6) 100%);}
+  .fx.grain{background:repeating-linear-gradient(180deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);
+    mix-blend-mode:overlay;opacity:.5;}
+
+  .hud{position:fixed;inset:0;z-index:2;pointer-events:none;}
+  .panel{pointer-events:auto;background:rgba(28,18,10,.42);
+    border:1px solid rgba(246,160,42,.28);border-radius:14px;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    box-shadow:0 0 0 1px rgba(0,0,0,.25),0 18px 50px rgba(0,0,0,.5),inset 0 0 40px rgba(246,160,42,.06);}
+
+  /* top bar */
+  .topbar{position:absolute;top:22px;left:22px;right:22px;display:flex;
+    align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:13px;padding:11px 18px;}
+  .bean{width:30px;height:30px;flex:0 0 auto;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+    background:linear-gradient(145deg,#3a210f,#7a4420);position:relative;
+    box-shadow:0 0 16px rgba(246,160,42,.5);transform:rotate(20deg);}
+  .bean::after{content:"";position:absolute;left:50%;top:8%;width:2px;height:84%;
+    background:rgba(20,10,4,.8);transform:translateX(-50%) rotate(8deg);border-radius:2px;}
+  .brand .t b{font-family:'Orbitron',sans-serif;font-weight:900;font-size:17px;letter-spacing:3px;
+    color:#ffe6c2;text-shadow:0 0 18px rgba(246,160,42,.55);}
+  .brand .t small{display:block;color:var(--muted);letter-spacing:5px;font-size:9.5px;margin-top:3px;}
+
+  .nav{display:flex;gap:6px;padding:7px;}
+  .nav a{pointer-events:auto;color:var(--ink);text-decoration:none;font-size:13px;letter-spacing:1px;
+    padding:7px 14px;border-radius:9px;transition:.2s;}
+  .nav a:hover{background:rgba(246,160,42,.16);color:#fff;}
+
+  /* hero (left) */
+  .hero{position:absolute;left:34px;top:50%;transform:translateY(-50%);max-width:520px;
+    padding:30px 32px;display:flex;flex-direction:column;gap:16px;}
+  .hero .eyebrow{display:flex;align-items:center;gap:9px;color:var(--amber);
+    font-size:12px;letter-spacing:4px;text-transform:uppercase;}
+  .hero .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 12px var(--amber);animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:46px;line-height:.98;
+    color:#fff;letter-spacing:1px;text-shadow:0 0 30px rgba(255,122,47,.4);}
+  .hero h1 span{background:linear-gradient(100deg,var(--gold),var(--orange));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero p{font-size:15.5px;line-height:1.5;color:var(--ink);max-width:430px;}
+  .cta{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap;}
+  .btn{pointer-events:auto;cursor:pointer;border:none;font-family:'Sora';font-weight:600;
+    font-size:14px;letter-spacing:1px;padding:13px 26px;border-radius:50px;transition:.25s;}
+  .btn.primary{background:linear-gradient(100deg,var(--orange),var(--amber));color:#2a1606;
+    box-shadow:0 8px 26px rgba(255,122,47,.4);}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(255,122,47,.55);}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(246,160,42,.45);}
+  .btn.ghost:hover{background:rgba(246,160,42,.14);color:#fff;}
+
+  /* feature chips (right) */
+  .features{position:absolute;right:24px;top:50%;transform:translateY(-50%);
+    width:236px;padding:20px;display:flex;flex-direction:column;gap:13px;}
+  .features h2{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:3px;
+    color:var(--amber);text-transform:uppercase;}
+  .feat{display:flex;gap:12px;align-items:flex-start;}
+  .feat .ic{width:30px;height:30px;flex:0 0 auto;border-radius:9px;display:grid;place-items:center;
+    font-size:15px;background:rgba(246,160,42,.14);border:1px solid rgba(246,160,42,.3);}
+  .feat b{display:block;font-size:14px;color:#ffe9cf;font-weight:600;}
+  .feat span{font-size:12px;color:var(--muted);line-height:1.3;}
+
+  /* bottom stats */
+  .footer{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
+    display:flex;gap:30px;padding:12px 30px;align-items:center;}
+  .footer .s{text-align:center;}
+  .footer .s b{font-family:'Orbitron',sans-serif;font-size:19px;color:#fff;display:block;
+    text-shadow:0 0 16px rgba(246,160,42,.5);}
+  .footer .s small{font-size:10.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;}
+  .footer .sep{width:1px;height:30px;background:rgba(246,160,42,.25);}
+
+  #boot{position:fixed;inset:0;z-index:5;background:var(--bg);display:flex;
+    align-items:center;justify-content:center;flex-direction:column;gap:18px;
+    transition:opacity .8s ease;font-family:'Orbitron',sans-serif;}
+  #boot .ring{width:58px;height:58px;border:3px solid rgba(246,160,42,.2);
+    border-top-color:var(--amber);border-radius:50%;animation:spin .9s linear infinite;}
+  #boot p{letter-spacing:4px;font-size:12px;color:var(--muted);}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  #err{position:fixed;inset:0;z-index:6;display:none;align-items:center;justify-content:center;
+    text-align:center;padding:40px;background:var(--bg);}
+  #err h3{font-family:'Orbitron',sans-serif;color:var(--amber);letter-spacing:2px;margin-bottom:12px;}
+  #err p{color:var(--muted);line-height:1.5;max-width:460px;}
+
+  @media (max-width:900px){
+    .features{display:none;}
+    .hero{left:18px;right:18px;max-width:none;padding:22px;}
+    .hero h1{font-size:34px;}
+    .nav{display:none;}
+  }
+</style>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+  <div class="fx vignette"></div>
+  <div class="fx grain"></div>
+
+  <div class="hud">
+    <div class="topbar">
+      <div class="panel brand">
+        <div class="bean"></div>
+        <div class="t"><b>MAXI</b><small>SPECIALTY&nbsp;COFFEE</small></div>
+      </div>
+      <nav class="panel nav">
+        <a href="#">Bohnen</a><a href="#">Labor</a><a href="#">Abo</a><a href="#">Story</a>
+      </nav>
+    </div>
+
+    <div class="panel hero">
+      <div class="eyebrow"><span class="pulse"></span> ROASTED IN THE FUTURE</div>
+      <h1>SPECIALTY&nbsp;COFFEE,<br><span>NEU&nbsp;GEDACHT.</span></h1>
+      <p>Single-Origin-Bohnen, präzisionsgeröstet im Maxi-Lab. Maximaler Geschmack,
+         minimaler Fußabdruck – Kaffee von morgen, heute in deiner Tasse.</p>
+      <div class="cta">
+        <button class="btn primary">JETZT ENTDECKEN</button>
+        <button class="btn ghost">↻ 360° ANSEHEN</button>
+      </div>
+    </div>
+
+    <div class="panel features">
+      <h2>// Unser Versprechen</h2>
+      <div class="feat"><div class="ic">🌍</div><div><b>Single Origin</b><span>Rückverfolgbar bis zur Farm</span></div></div>
+      <div class="feat"><div class="ic">🔥</div><div><b>Präzisions-Röstung</b><span>Gradgenau, KI-gesteuert</span></div></div>
+      <div class="feat"><div class="ic">🧪</div><div><b>Cold-Brew-Lab</b><span>48h kalt extrahiert</span></div></div>
+      <div class="feat"><div class="ic">♻️</div><div><b>Zero Waste</b><span>Kompostierbar &amp; klimaneutral</span></div></div>
+    </div>
+
+    <div class="panel footer">
+      <div class="s"><b>100%</b><small>Arabica</small></div>
+      <div class="sep"></div>
+      <div class="s"><b>12</b><small>Herkünfte</small></div>
+      <div class="sep"></div>
+      <div class="s"><b>48h</b><small>Frisch geröstet</small></div>
+    </div>
+  </div>
+
+  <div id="boot"><div class="ring"></div><p>BREWING&nbsp;EXPERIENCE…</p></div>
+  <div id="err"><div><h3>WebGL nicht verfügbar</h3><p>Diese 3D-Seite benötigt einen Browser mit WebGL. Bitte in einem aktuellen Chrome, Safari, Edge oder Firefox öffnen.</p></div></div>
+
+  <script src="./three.min.js"></script>
+  <script src="./OrbitControls.js"></script>
+  <script>
+  (function () {
+    function fail(){ document.getElementById('err').style.display='flex';
+      document.getElementById('boot').style.display='none'; }
+    if (typeof THREE === 'undefined') { fail(); return; }
+
+    var canvas = document.getElementById('scene'), renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); }
+    catch (e) { fail(); return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    var scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x0a0603, 0.022);
+    var camera = new THREE.PerspectiveCamera(56, window.innerWidth/window.innerHeight, 0.1, 600);
+    camera.position.set(0, 9, 42);
+
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; controls.dampingFactor = 0.06;
+    controls.autoRotate = true; controls.autoRotateSpeed = 0.6;
+    controls.minDistance = 22; controls.maxDistance = 90;
+    controls.maxPolarAngle = Math.PI * 0.9; controls.target.set(0, 3, 0);
+
+    scene.add(new THREE.AmbientLight(0x4a2f18, 0.9));
+    var l1 = new THREE.PointLight(0xffa94d, 1.5, 240); l1.position.set(24, 30, 24); scene.add(l1);
+    var l2 = new THREE.PointLight(0xff6a2a, 1.0, 240); l2.position.set(-30, 14, -10); scene.add(l2);
+    var l3 = new THREE.PointLight(0xffe0a3, 0.7, 200); l3.position.set(0, 8, 30); scene.add(l3);
+
+    // glow sprite texture
+    function glowTexture(){
+      var c=document.createElement('canvas'); c.width=c.height=64; var x=c.getContext('2d');
+      var g=x.createRadialGradient(32,32,0,32,32,32);
+      g.addColorStop(0,'rgba(255,255,255,1)'); g.addColorStop(.3,'rgba(255,220,170,.8)');
+      g.addColorStop(.6,'rgba(255,150,60,.25)'); g.addColorStop(1,'rgba(255,120,40,0)');
+      x.fillStyle=g; x.fillRect(0,0,64,64);
+      var t=new THREE.Texture(c); t.needsUpdate=true; return t;
+    }
+    var GLOW = glowTexture();
+
+    // warm dust
+    (function(){
+      var n=1500, g=new THREE.BufferGeometry(), p=new Float32Array(n*3);
+      for(var i=0;i<n;i++){ var r=120+Math.random()*200, t=Math.random()*6.28, ph=Math.acos(2*Math.random()-1);
+        p[i*3]=r*Math.sin(ph)*Math.cos(t); p[i*3+1]=r*Math.cos(ph)*0.6; p[i*3+2]=r*Math.sin(ph)*Math.sin(t); }
+      g.setAttribute('position', new THREE.BufferAttribute(p,3));
+      scene.add(new THREE.Points(g, new THREE.PointsMaterial({color:0xffcaa0,size:0.5,transparent:true,opacity:0.55})));
+    })();
+
+    // neon grid floor
+    var grid = new THREE.GridHelper(240, 56, 0xff8a3a, 0x5a3417);
+    grid.position.y = -12; grid.material.transparent = true; grid.material.opacity = 0.4; scene.add(grid);
+
+    // halo rings behind cup
+    var ring = new THREE.Mesh(new THREE.TorusGeometry(13, 0.18, 16, 120),
+      new THREE.MeshBasicMaterial({color:0xffb05a, transparent:true, opacity:0.5}));
+    ring.position.set(0,4,-2); ring.rotation.x = Math.PI*0.5; scene.add(ring);
+    var ring2 = ring.clone(); ring2.scale.setScalar(1.35); ring2.material = ring.material.clone();
+    ring2.material.opacity = 0.22; scene.add(ring2);
+
+    // ---- central coffee cup ----
+    var cup = new THREE.Group(); cup.position.y = 2; scene.add(cup);
+    var cupMat = new THREE.MeshStandardMaterial({ color:0x1b1208, emissive:0xff7a2a, emissiveIntensity:0.35,
+      metalness:0.4, roughness:0.35 });
+    var body = new THREE.Mesh(new THREE.CylinderGeometry(3.2, 2.4, 4.4, 48, 1, true), cupMat);
+    cup.add(body);
+    var rim = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.22, 16, 48),
+      new THREE.MeshStandardMaterial({color:0xffce7a, emissive:0xffa53a, emissiveIntensity:0.6, metalness:0.6, roughness:0.2}));
+    rim.position.y = 2.2; rim.rotation.x = Math.PI*0.5; cup.add(rim);
+    var coffee = new THREE.Mesh(new THREE.CircleGeometry(3.05, 48),
+      new THREE.MeshStandardMaterial({color:0x2a1408, emissive:0x140a04, roughness:0.25, metalness:0.5}));
+    coffee.position.y = 2.18; coffee.rotation.x = -Math.PI*0.5; cup.add(coffee);
+    var handle = new THREE.Mesh(new THREE.TorusGeometry(1.25, 0.28, 14, 36, Math.PI*1.2), cupMat.clone());
+    handle.position.set(3.2, 0.4, 0); handle.rotation.z = Math.PI*0.5; cup.add(handle);
+    var cupGlow = new THREE.Sprite(new THREE.SpriteMaterial({map:GLOW,color:0xff8a3a,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false}));
+    cupGlow.scale.set(20,20,1); cupGlow.position.set(0,2.5,0); scene.add(cupGlow);
+
+    // ---- steam particles ----
+    var STEAM = 90, sg = new THREE.BufferGeometry(), spos = new Float32Array(STEAM*3), sseed=[];
+    for (var s=0;s<STEAM;s++){ spos[s*3]=(Math.random()-0.5)*3; spos[s*3+1]=4.5+Math.random()*9;
+      spos[s*3+2]=(Math.random()-0.5)*3; sseed.push({x:spos[s*3],z:spos[s*3+2],sp:0.4+Math.random()*0.7,ph:Math.random()*6.28}); }
+    sg.setAttribute('position', new THREE.BufferAttribute(spos,3));
+    var steam = new THREE.Points(sg, new THREE.PointsMaterial({map:GLOW,color:0xffe7c8,size:2.6,transparent:true,opacity:0.32,blending:THREE.AdditiveBlending,depthWrite:false}));
+    scene.add(steam);
+
+    // ---- orbiting coffee beans ----
+    var beanGeo = new THREE.SphereGeometry(1, 18, 14);
+    var beanMat = new THREE.MeshStandardMaterial({ color:0x5a3318, emissive:0x3a1d0a, emissiveIntensity:0.5, roughness:0.6, metalness:0.2 });
+    var beans = [];
+    function makeBean(scale){
+      var g = new THREE.Group();
+      var m = new THREE.Mesh(beanGeo, beanMat.clone());
+      m.scale.set(1, 0.62, 1.5); g.add(m);
+      var crease = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.5, 2.6),
+        new THREE.MeshBasicMaterial({color:0x140a04}));
+      g.add(crease);
+      g.scale.setScalar(scale);
+      var glow = new THREE.Sprite(new THREE.SpriteMaterial({map:GLOW,color:0xffa040,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+      glow.scale.set(5*scale,5*scale,1); g.add(glow);
+      scene.add(g); return g;
+    }
+    var RINGS = [{r:11,n:8,y:3,sp:0.25,sc:0.9},{r:17,n:14,y:5,sp:-0.16,sc:0.75},{r:23,n:18,y:1,sp:0.1,sc:0.62}];
+    RINGS.forEach(function(R){
+      for(var i=0;i<R.n;i++){
+        var a=(i/R.n)*Math.PI*2;
+        beans.push({g:makeBean(R.sc), r:R.r, a:a, y:R.y+(Math.random()-0.5)*4, sp:R.sp,
+          rs:0.4+Math.random()*0.8, bob:Math.random()*6.28});
+      }
+    });
+
+    var clock = new THREE.Clock();
+    function tick(){
+      requestAnimationFrame(tick);
+      var t = clock.getElapsedTime();
+      cup.rotation.y += 0.004;
+      ring.rotation.z += 0.003; ring2.rotation.z -= 0.002;
+      cupGlow.material.opacity = 0.6 + Math.sin(t*1.8)*0.12;
+
+      var arr = steam.geometry.attributes.position.array;
+      for (var s=0;s<STEAM;s++){
+        arr[s*3+1] += 0.04*sseed[s].sp + 0.03;
+        arr[s*3] = sseed[s].x + Math.sin(t*sseed[s].sp + sseed[s].ph)*0.7;
+        arr[s*3+2] = sseed[s].z + Math.cos(t*sseed[s].sp + sseed[s].ph)*0.7;
+        if (arr[s*3+1] > 15){ arr[s*3+1] = 4.5; }
+      }
+      steam.geometry.attributes.position.needsUpdate = true;
+
+      for (var i=0;i<beans.length;i++){
+        var b = beans[i]; b.a += 0.0016 + b.sp*0.0016;
+        var y = b.y + Math.sin(t*0.6 + b.bob)*0.8;
+        b.g.position.set(Math.cos(b.a)*b.r, y, Math.sin(b.a)*b.r);
+        b.g.rotation.x += 0.004*b.rs; b.g.rotation.y += 0.006*b.rs;
+      }
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    tick();
+
+    window.addEventListener('resize', function(){
+      camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    setTimeout(function(){
+      var b=document.getElementById('boot'); b.style.opacity='0';
+      setTimeout(function(){ b.style.display='none'; }, 800);
+    }, 1000);
+  })();
+  </script>
+</body>
+</html>
