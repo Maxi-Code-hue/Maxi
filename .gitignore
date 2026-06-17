@@ -31,3 +31,6 @@ swarm-site/*.zip
 # coffee-site render artifacts
 coffee-site/preview.png
 coffee-site/*.zip
+
+# villa-site render shots
+villa-site/shots/
