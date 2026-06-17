@@ -3,6 +3,12 @@
  *
  * This keeps the demo dependency-free and runnable without an external
  * database. For production, swap this module for a real DB (Postgres/Prisma).
+ *
+ * Concurrency: every read-modify-write goes through `transaction()`, which
+ * holds an exclusive cross-process lock (atomic `mkdir`) for the whole
+ * read → mutate → write cycle and persists via an atomic temp-file rename.
+ * This prevents the TOCTOU race where two concurrent requests could consume
+ * the same magic token (or corrupt the file) before either had written back.
  */
 import fs from "fs";
 import path from "path";
@@ -48,6 +54,7 @@ type Schema = {
 
 const DATA_DIR = path.join(process.cwd(), ".data");
 const DB_FILE = path.join(DATA_DIR, "db.json");
+const LOCK_DIR = path.join(DATA_DIR, ".lock");
 
 const EMPTY: Schema = { users: [], tokens: [], sessions: [], brews: [] };
 
@@ -61,23 +68,74 @@ function read(): Schema {
   }
 }
 
-function write(data: Schema): void {
+/** Persist atomically: write to a temp file, then rename over the target. */
+function writeAtomic(data: Schema): void {
   fs.mkdirSync(DATA_DIR, { recursive: true });
-  fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), "utf8");
+  const tmp = `${DB_FILE}.${process.pid}.${Date.now()}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(data, null, 2), "utf8");
+  fs.renameSync(tmp, DB_FILE); // rename is atomic on the same filesystem
+}
+
+/** Acquire an exclusive lock. `mkdir` is atomic, so only one holder wins. */
+function acquireLock(): void {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+  const deadline = Date.now() + 2000;
+  for (;;) {
+    try {
+      fs.mkdirSync(LOCK_DIR);
+      return;
+    } catch {
+      if (Date.now() > deadline) {
+        // Lock is likely stale (crashed holder): reclaim it.
+        try {
+          fs.rmdirSync(LOCK_DIR);
+          fs.mkdirSync(LOCK_DIR);
+        } catch {
+          /* give up gracefully and proceed */
+        }
+        return;
+      }
+      const until = Date.now() + 15; // brief synchronous backoff
+      while (Date.now() < until) {
+        /* spin */
+      }
+    }
+  }
+}
+
+function releaseLock(): void {
+  try {
+    fs.rmdirSync(LOCK_DIR);
+  } catch {
+    /* already released */
+  }
+}
+
+/** Run a read → mutate → write cycle atomically under the file lock. */
+function transaction<T>(mutate: (data: Schema) => T): T {
+  acquireLock();
+  try {
+    const data = read();
+    const result = mutate(data);
+    writeAtomic(data);
+    return result;
+  } finally {
+    releaseLock();
+  }
 }
 
 // --- Users ---------------------------------------------------------------
 
 export function findOrCreateUser(email: string): User {
   const normalized = email.trim().toLowerCase();
-  const data = read();
-  let user = data.users.find((u) => u.email === normalized);
-  if (!user) {
-    user = { id: crypto.randomUUID(), email: normalized, createdAt: Date.now() };
-    data.users.push(user);
-    write(data);
-  }
-  return user;
+  return transaction((data) => {
+    let user = data.users.find((u) => u.email === normalized);
+    if (!user) {
+      user = { id: crypto.randomUUID(), email: normalized, createdAt: Date.now() };
+      data.users.push(user);
+    }
+    return user;
+  });
 }
 
 export function getUser(id: string): User | undefined {
@@ -87,36 +145,36 @@ export function getUser(id: string): User | undefined {
 // --- Magic tokens --------------------------------------------------------
 
 export function createToken(token: MagicToken): void {
-  const data = read();
-  data.tokens.push(token);
-  write(data);
+  transaction((data) => {
+    data.tokens.push(token);
+  });
 }
 
 export function consumeToken(tokenHash: string): MagicToken | null {
-  const data = read();
-  const now = Date.now();
-  const token = data.tokens.find(
-    (t) => t.tokenHash === tokenHash && t.consumedAt === null && t.expiresAt > now,
-  );
-  if (!token) return null;
-  token.consumedAt = now;
-  write(data);
-  return token;
+  return transaction((data) => {
+    const now = Date.now();
+    const token = data.tokens.find(
+      (t) => t.tokenHash === tokenHash && t.consumedAt === null && t.expiresAt > now,
+    );
+    if (!token) return null;
+    token.consumedAt = now; // marked inside the same locked transaction
+    return token;
+  });
 }
 
 // --- Sessions ------------------------------------------------------------
 
 export function createSession(userId: string, ttlMs: number): Session {
-  const data = read();
-  const session: Session = {
-    id: crypto.randomUUID(),
-    userId,
-    expiresAt: Date.now() + ttlMs,
-    createdAt: Date.now(),
-  };
-  data.sessions.push(session);
-  write(data);
-  return session;
+  return transaction((data) => {
+    const session: Session = {
+      id: crypto.randomUUID(),
+      userId,
+      expiresAt: Date.now() + ttlMs,
+      createdAt: Date.now(),
+    };
+    data.sessions.push(session);
+    return session;
+  });
 }
 
 export function getSession(id: string): Session | undefined {
@@ -127,9 +185,9 @@ export function getSession(id: string): Session | undefined {
 }
 
 export function deleteSession(id: string): void {
-  const data = read();
-  data.sessions = data.sessions.filter((s) => s.id !== id);
-  write(data);
+  transaction((data) => {
+    data.sessions = data.sessions.filter((s) => s.id !== id);
+  });
 }
 
 // --- Brews (per-user brew journal) ---------------------------------------
@@ -141,9 +199,9 @@ export function listBrews(userId: string): Brew[] {
 }
 
 export function addBrew(brew: Omit<Brew, "id" | "createdAt">): Brew {
-  const data = read();
-  const entry: Brew = { ...brew, id: crypto.randomUUID(), createdAt: Date.now() };
-  data.brews.push(entry);
-  write(data);
-  return entry;
+  return transaction((data) => {
+    const entry: Brew = { ...brew, id: crypto.randomUUID(), createdAt: Date.now() };
+    data.brews.push(entry);
+    return entry;
+  });
 }
