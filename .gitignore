@@ -23,3 +23,7 @@ next-env.d.ts
 
 # ruflo / claude-flow runtime state
 /.swarm/
+
+# build/render artifacts
+swarm-site/preview.png
+swarm-site/*.zip
