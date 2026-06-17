@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Infopost · Dubai & die Golfstaaten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0c1c2e; --navy2:#102a44; --ink:#0a1521;
+    --gold:#e6b15e; --gold2:#f6d28a; --sand:#f2e6cf;
+    --cream:#fbf4e6; --muted:#9fb2c4; --teal:#37b0bd; --red:#d6604a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#33414f;font-family:'Inter',system-ui,Arial,sans-serif;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;padding:26px;}
+  .deck{display:flex;flex-direction:column;gap:26px;align-items:center;}
+
+  .slide{width:1080px;height:1080px;position:relative;overflow:hidden;
+    background:linear-gradient(160deg,var(--navy) 0%,var(--ink) 100%);color:var(--cream);
+    box-shadow:0 24px 70px rgba(0,0,0,.5);}
+  .pad{position:absolute;inset:0;padding:76px 74px;display:flex;flex-direction:column;}
+
+  /* shared footer */
+  .foot{position:absolute;left:74px;right:74px;bottom:46px;display:flex;
+    align-items:center;justify-content:space-between;font-size:21px;color:var(--muted);
+    border-top:1px solid rgba(230,177,94,.25);padding-top:18px;}
+  .foot .h{display:flex;align-items:center;gap:11px;font-weight:600;color:var(--sand);}
+  .foot .h .d{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,var(--gold),var(--gold2));}
+  .src{font-size:18px;color:#7d92a6;font-style:italic;}
+
+  .kicker{display:inline-flex;align-items:center;gap:12px;font-weight:700;letter-spacing:3px;
+    font-size:20px;color:var(--gold);text-transform:uppercase;}
+  .kicker .num{background:var(--gold);color:var(--ink);width:40px;height:40px;border-radius:10px;
+    display:grid;place-items:center;font-family:'Anton';font-size:24px;letter-spacing:0;}
+  h1{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.96;letter-spacing:.5px;}
+  .lead{font-size:27px;line-height:1.45;color:#e7eef5;}
+
+  /* cover */
+  .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .cover .scrim{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(8,16,26,.35) 0%,rgba(8,16,26,.1) 38%,rgba(8,16,26,.92) 100%);}
+  .cover .pad{justify-content:flex-end;}
+  .cover .tag{font-weight:700;letter-spacing:5px;font-size:22px;color:var(--gold2);text-transform:uppercase;}
+  .cover h1{font-size:188px;color:#fff;margin:6px 0 4px;text-shadow:0 8px 40px rgba(0,0,0,.5);}
+  .cover .sub{font-size:34px;font-weight:600;color:#fff;max-width:760px;line-height:1.2;}
+  .cover .swipe{position:absolute;right:74px;bottom:150px;font-weight:700;color:var(--gold2);
+    font-size:24px;letter-spacing:1px;}
+  .cover .handle{margin-top:26px;font-size:23px;color:#cdd9e4;font-weight:600;}
+
+  /* stat callouts */
+  .stats{display:flex;gap:26px;margin:30px 0 4px;}
+  .stat{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(230,177,94,.3);
+    border-radius:20px;padding:26px 28px;}
+  .stat .v{font-family:'Anton';font-size:60px;color:var(--gold2);line-height:1;}
+  .stat .l{font-size:21px;color:#d3deea;margin-top:10px;line-height:1.3;}
+
+  /* bars */
+  .bars{display:flex;flex-direction:column;gap:18px;margin-top:18px;}
+  .bar{display:flex;align-items:center;gap:18px;}
+  .bar .name{width:230px;font-size:25px;font-weight:600;color:#eaf1f8;text-align:right;}
+  .bar .track{flex:1;height:46px;background:rgba(255,255,255,.06);border-radius:9px;overflow:hidden;position:relative;}
+  .bar .fill{height:100%;border-radius:9px;background:linear-gradient(90deg,var(--gold),var(--gold2));
+    display:flex;align-items:center;justify-content:flex-end;padding-right:16px;font-weight:800;color:var(--ink);font-size:23px;}
+  .bar.dim .fill{background:linear-gradient(90deg,#3c5ب,#5e7governance);}
+  .bar .fill.alt{background:linear-gradient(90deg,#2b6f8f,#37b0bd);color:#fff;}
+
+  ul.pts{list-style:none;display:flex;flex-direction:column;gap:20px;margin-top:26px;}
+  ul.pts li{font-size:27px;line-height:1.4;color:#e7eef5;padding-left:46px;position:relative;}
+  ul.pts li::before{content:"";position:absolute;left:0;top:11px;width:22px;height:22px;border-radius:6px;
+    background:linear-gradient(135deg,var(--gold),var(--gold2));}
+  ul.pts li b{color:#fff;}
+
+  .split{display:flex;gap:30px;margin-top:26px;flex:1;}
+  .col{flex:1;border-radius:22px;padding:34px 30px;display:flex;flex-direction:column;gap:16px;}
+  .col.then{background:rgba(255,255,255,.05);border:1px solid rgba(159,178,196,.3);}
+  .col.now{background:linear-gradient(160deg,rgba(230,177,94,.16),rgba(230,177,94,.05));border:1px solid rgba(230,177,94,.4);}
+  .col h3{font-family:'Anton';font-size:40px;letter-spacing:1px;}
+  .col.then h3{color:var(--muted);} .col.now h3{color:var(--gold2);}
+  .col p{font-size:23px;line-height:1.4;color:#dce6f0;}
+  .col .big{font-family:'Anton';font-size:54px;color:#fff;}
+
+  .photocard{border-radius:22px;overflow:hidden;border:1px solid rgba(230,177,94,.3);position:relative;flex:1;}
+  .photocard img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photocard .cap{position:absolute;left:0;right:0;bottom:0;padding:46px 24px 18px;color:#fff;font-size:20px;
+    font-weight:600;background:linear-gradient(180deg,transparent,rgba(8,16,26,.9));}
+
+  .future-risk{margin-top:8px;background:rgba(214,96,74,.12);border:1px solid rgba(214,96,74,.5);
+    border-radius:18px;padding:24px 28px;font-size:23px;line-height:1.4;color:#ffd9d0;}
+  .future-risk b{color:#ffb4a6;}
+
+  @media print{ body{background:#fff;padding:0;} .deck{gap:0;} .slide{box-shadow:none;page-break-after:always;} }
+/* dune-bg */
+  .slide:not(.cover)::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'1080'%20height%3D'1080'%3E%3Cg%20fill%3D'none'%20stroke%3D'%23e6b15e'%20stroke-width%3D'2.4'%3E%3Cpath%20d%3D'M-20%2C760%20Q360%2C560%20760%2C720%20T1100%2C700'%2F%3E%3Cpath%20d%3D'M-20%2C820%20Q360%2C620%20760%2C780%20T1100%2C760'%2F%3E%3Cpath%20d%3D'M-20%2C880%20Q360%2C680%20760%2C840%20T1100%2C820'%2F%3E%3Cpath%20d%3D'M-20%2C940%20Q360%2C740%20760%2C900%20T1100%2C880'%2F%3E%3Cpath%20d%3D'M-20%2C1000%20Q360%2C800%20760%2C960%20T1100%2C940'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");background-size:cover;background-position:center;opacity:.09;}
+  .slide:not(.cover) > .pad, .slide:not(.cover) > .foot{z-index:1;}
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide cover">
+    <img src="__COVER__" alt="Dubai Skyline mit Burj Khalifa" />
+    <div class="scrim"></div>
+    <div class="pad">
+      <div class="tag">Geo · Quest 7 · Influencer/-in</div>
+      <h1>DUBAI</h1>
+      <div class="sub">Wie aus Wüste &amp; Fischerdorf in 75 Jahren eine Megacity wurde 🌇</div>
+      <div class="handle">📍 Dubai, VAE · @maxi.geo · swipe dich durch 👉</div>
+    </div>
+    <div class="swipe">SWIPE →</div>
+  </section>
+
+  <!-- 2 BEVÖLKERUNG -->
+  <section class="slide">
+    <div class="pad">
+      <div class="kicker"><span class="num">1</span> Vom Fischerdorf zur Millionenstadt</div>
+      <h1 style="font-size:64px;margin-top:24px;color:#fff;">Explosion der Bevölkerung</h1>
+      <div class="lead" style="margin-top:18px;">1950 lebten hier nur ein paar tausend Perlentaucher und Händler. Heute? Eine Weltstadt, gewachsen fast komplett durch <b>Zuwanderung</b>.</div>
+
+      <svg viewBox="0 0 900 300" style="width:100%;height:300px;margin-top:30px;">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f6d28a" stop-opacity="0.85"/><stop offset="1" stop-color="#e6b15e" stop-opacity="0.08"/></linearGradient></defs>
+        <polyline points="20,280 180,272 360,250 540,205 720,120 880,40" fill="none" stroke="#f6d28a" stroke-width="5"/>
+        <polygon points="20,280 180,272 360,250 540,205 720,120 880,40 880,290 20,290" fill="url(#g1)"/>
+        <g font-family="Inter" font-size="20" fill="#9fb2c4">
+          <text x="20" y="295">1950</text><text x="330" y="295">1985</text>
+          <text x="510" y="295">2000</text><text x="690" y="295">2015</text><text x="820" y="295">heute</text>
+        </g>
+        <g font-family="Inter" font-size="19" fill="#fff" font-weight="700">
+          <text x="6" y="270">0,02 Mio</text><text x="800" y="32">3,7 Mio</text>
+        </g>
+      </svg>
+
+      <div class="stats">
+        <div class="stat"><div class="v">≈ 3,7 Mio</div><div class="l">Einwohner in Dubai heute (1950: ≈ 20.000)</div></div>
+        <div class="stat"><div class="v">≈ 90 %</div><div class="l">der Menschen in Dubai kommen aus dem Ausland</div></div>
+      </div>
+    </div>
+    <div class="foot"><div class="h"><span class="d"></span>@maxi.geo</div><div class="src">Quelle: Schulbuch S. 62/63 · UN/Dubai Statistics (ca.)</div></div>
+  </section>
+
+  <!-- 3 ERDÖL -->
+  <section class="slide">
+    <div class="pad">
+      <div class="kicker"><span class="num">2</span> Schwarzes Gold</div>
+      <h1 style="font-size:64px;margin-top:24px;color:#fff;">Wer fördert das meiste Öl?</h1>
+      <div class="lead" style="margin-top:14px;">Erdölförderung der Golfstaaten 2020 (in Mio. Barrel pro Tag):</div>
+
+      <div class="bars">
+        <div class="bar"><div class="name">Saudi-Arabien</div><div class="track"><div class="fill" style="width:94%">9,28</div></div></div>
+        <div class="bar"><div class="name">Irak</div><div class="track"><div class="fill" style="width:42%">4,16</div></div></div>
+        <div class="bar"><div class="name">VAE 🇦🇪</div><div class="track"><div class="fill alt" style="width:31%">2,99</div></div></div>
+        <div class="bar"><div class="name">Kuwait</div><div class="track"><div class="fill" style="width:25%">2,48</div></div></div>
+        <div class="bar"><div class="name">Iran</div><div class="track"><div class="fill" style="width:20%">1,97</div></div></div>
+      </div>
+
+      <div class="stats" style="margin-top:34px;">
+        <div class="stat"><div class="v">1966</div><div class="l">Jahr, in dem in Dubai Öl entdeckt wurde</div></div>
+        <div class="stat"><div class="v">&lt; 1 %</div><div class="l">Anteil des Öls an Dubais heutigem BIP , die Stadt lebt längst von anderem</div></div>
+      </div>
+    </div>
+    <div class="foot"><div class="h"><span class="d"></span>@maxi.geo</div><div class="src">Quelle: Schulbuch S. 62 (M1, Ölförderung 2020)</div></div>
+  </section>
+
+  <!-- 4 WIRTSCHAFT -->
+  <section class="slide">
+    <div class="pad">
+      <div class="kicker"><span class="num">3</span> Vom Öl zur Vielfalt</div>
+      <h1 style="font-size:60px;margin-top:22px;color:#fff;">Strukturwandel der Wirtschaft</h1>
+      <div class="split">
+        <div style="flex:1.1;display:flex;flex-direction:column;">
+          <ul class="pts">
+            <li>Riesiger Hafen Jebel Ali, einer der größten weltweit</li>
+            <li>Über <b>17 Mio</b> Touristen pro Jahr (2023)</li>
+            <li><b>Finanzen &amp; Immobilien:</b> Burj Khalifa, Palm Jumeirah</li>
+            <li>Flughafen DXB, einer der meistgenutzten der Welt</li>
+          </ul>
+          <div class="future-risk" style="margin-top:24px;background:rgba(55,176,189,.1);border-color:rgba(55,176,189,.5);color:#cfeef2;">
+            <b>Zum Vergleich, Kuwait:</b> da macht Öl noch <b>40–50 %</b> vom BIP und <b>92–95 %</b> der Exporte aus. Dubai ist viel breiter aufgestellt.
+          </div>
+        </div>
+        <div class="photocard"><img src="__MARINA__" alt="Dubai Marina"/><div class="cap">Dubai Marina: Wohnen &amp; Business statt Ölfeldern</div></div>
+      </div>
+    </div>
+    <div class="foot"><div class="h"><span class="d"></span>@maxi.geo</div><div class="src">Quelle: Schulbuch S. 62/63 (M5) · Dept. of Economy &amp; Tourism Dubai (ca.)</div></div>
+  </section>
+
+  <!-- 5 DAMALS / HEUTE + KARTE -->
+  <section class="slide">
+    <div class="pad">
+      <div class="kicker"><span class="num">4</span> Dubai damals &amp; heute</div>
+      <div class="split" style="margin-top:24px;">
+        <div class="col then">
+          <h3>1950</h3>
+          <div class="big">≈ 20.000</div>
+          <p>Kleines Hafen- und Fischerdorf am Creek. Leben von <b>Perlentauchen</b>, Fischfang und Handel. Drumherum: Wüste.</p>
+        </div>
+        <div class="col now">
+          <h3>HEUTE</h3>
+          <div class="big">≈ 3,7 Mio</div>
+          <p><b>Burj Khalifa (828 m)</b>, künstliche Inseln (Palm Jumeirah), Metro, Mega-Mall &amp; Weltflughafen.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:26px;margin-top:24px;flex:1;">
+        <div class="photocard" style="flex:1.2;"><img src="__BURJAL__" alt="Burj Al Arab"/><div class="cap">Burj Al Arab, gebaut auf aufgeschüttetem Land</div></div>
+        <svg viewBox="0 0 360 360" style="width:300px;height:300px;background:rgba(255,255,255,.04);border-radius:22px;border:1px solid rgba(230,177,94,.3);">
+          <text x="20" y="36" font-family="Anton" font-size="26" fill="#f6d28a">Lage</text>
+          <!-- stylised Arabian peninsula -->
+          <path d="M60,90 L150,70 L250,80 L300,140 L290,210 L230,300 L150,310 L90,250 L70,170 Z"
+                fill="#16324c" stroke="#3a5a78" stroke-width="2"/>
+          <!-- gulf water -->
+          <path d="M250,80 L320,70 L330,150 L300,150 L290,110 Z" fill="#1d4a63" opacity="0.7"/>
+          <circle cx="288" cy="128" r="9" fill="#e6b15e"/>
+          <text x="200" y="120" font-family="Inter" font-size="20" font-weight="700" fill="#fff">Dubai</text>
+          <text x="120" y="200" font-family="Inter" font-size="18" fill="#9fb2c4">Arabische</text>
+          <text x="120" y="222" font-family="Inter" font-size="18" fill="#9fb2c4">Halbinsel</text>
+          <text x="244" y="52" font-family="Inter" font-size="14" fill="#7fd8e0">Pers. Golf</text>
+        </svg>
+      </div>
+    </div>
+    <div class="foot"><div class="h"><span class="d"></span>@maxi.geo</div><div class="src">Quelle: Schulbuch S. 62/63 · eigene Karte</div></div>
+  </section>
+
+  <!-- 6 ZUKUNFT -->
+  <section class="slide">
+    <div class="pad">
+      <div class="kicker"><span class="num">5</span> Zukunftsszenario</div>
+      <h1 style="font-size:62px;margin-top:22px;color:#fff;">Dubai 2125: Leben nach dem Öl?</h1>
+      <div class="lead" style="margin-top:14px;">Öl ist endlich. Und die Golfstaaten planen die Zeit danach längst:</div>
+      <ul class="pts">
+        <li><b>Vision 2071 &amp; Agenda D33:</b> Wirtschaft ohne Öl, dafür Tech &amp; Tourismus</li>
+        <li><b>Erneuerbare Energie:</b> riesiger Solarpark, Ziel <b>Netto-Null bis 2050</b></li>
+        <li><b>Zukunftsprojekte:</b> KI-Stadt, „Silk City" (Kuwait), sogar ein Mars-Programm 2117</li>
+      </ul>
+      <div class="future-risk">
+        <b>Aber die Risiken:</b> extreme Hitze &amp; Wasserknappheit durch den Klimawandel, hohe Abhängigkeit von Arbeitsmigrant:innen und die Frage, was passiert, wenn die Öl-Einnahmen wegfallen.
+      </div>
+    </div>
+    <div class="foot"><div class="h"><span class="d"></span>@maxi.geo</div><div class="src">Quelle: Schulbuch S. 62/63 (M5/M7) · UAE Vision 2071 / D33 (recherchiert)</div></div>
+  </section>
+
+  <!-- 7 OUTRO -->
+  <section class="slide">
+    <div class="pad" style="justify-content:center;align-items:center;text-align:center;">
+      <div style="font-family:'Anton';font-size:120px;color:var(--gold2);line-height:1;">شكراً</div>
+      <h1 style="font-size:70px;color:#fff;margin-top:18px;">Danke fürs Swipen!</h1>
+      <div class="lead" style="max-width:760px;margin-top:20px;">Wild, oder? In 75 Jahren von der Wüste zur Megacity. Bleibt nur die Frage: Was kommt eigentlich nach dem Öl?</div>
+      <div style="margin-top:40px;font-size:22px;color:var(--muted);line-height:1.6;">
+        <b style="color:var(--sand);">Quellen:</b> Geo-Schulbuch „Nordafrika &amp; Vorderasien", S. 62/63 (M1–M7) ·<br>
+        Statista 2021 · UN / Dubai Statistics Center · UAE Vision 2071 / Dubai D33<br>
+        <span style="font-style:italic;">Recherchierte Werte sind gerundet (ca.).</span>
+      </div>
+      <div style="margin-top:36px;font-size:26px;font-weight:700;color:var(--gold2);">@maxi.geo</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

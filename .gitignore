@@ -20,3 +20,20 @@
 .DS_Store
 next-env.d.ts
 *.tsbuildinfo
+
+# ruflo / claude-flow runtime state
+/.swarm/
+
+# build/render artifacts
+swarm-site/preview.png
+swarm-site/*.zip
+
+# coffee-site render artifacts
+coffee-site/preview.png
+coffee-site/*.zip
+
+# villa-site render shots
+villa-site/shots/
+
+# atelier-site render shots
+atelier-site/shots/
