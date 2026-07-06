@@ -57,6 +57,7 @@ export default function HomePage() {
             <div className="nav-links">
               <a href="#beans">Beans</a>
               <a href="#why">Why us</a>
+              <Link href="/portfolio">Portfolio</Link>
               <Link href="/login">Sign in</Link>
               <Link href="/login" className="btn btn-primary">
                 Get started

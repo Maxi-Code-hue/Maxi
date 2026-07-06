@@ -1,0 +1,444 @@
+/* ===========================================================
+   Portfolio „Glück" — editorial magazine layout
+   Warm palette shared with the Maxi Coffee design system.
+   =========================================================== */
+
+.pf {
+  --pf-ink: #241812;
+  --pf-espresso: #2b1d14;
+  --pf-coffee: #6f4e37;
+  --pf-caramel: #b07d4f;
+  --pf-accent: #c9821f;
+  --pf-gold: #e0a63d;
+  --pf-red: #c0392b;
+  --pf-cream: #f5ede2;
+  --pf-foam: #fbf7f0;
+  --pf-paper: #fffdf9;
+  --pf-muted: #7c6a5a;
+  --pf-border: #e6d8c6;
+  --pf-shadow: 0 18px 50px rgba(43, 29, 20, 0.16);
+  --pf-shadow-sm: 0 8px 22px rgba(43, 29, 20, 0.1);
+
+  color: var(--pf-ink);
+  background:
+    radial-gradient(1200px 620px at 88% -8%, #fff2dd 0%, transparent 55%),
+    radial-gradient(900px 500px at 0% 12%, #f7ecdd 0%, transparent 50%),
+    var(--pf-foam);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.pf ::selection {
+  background: var(--pf-gold);
+  color: #2b1d14;
+}
+
+.pf-wrap {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Top bar ---------- */
+.pf-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: saturate(1.4) blur(8px);
+  background: rgba(251, 247, 240, 0.82);
+  border-bottom: 1px solid var(--pf-border);
+}
+.pf-topbar .pf-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.pf-home {
+  text-decoration: none;
+  color: var(--pf-muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+.pf-home:hover { color: var(--pf-espresso); }
+.pf-print-btn {
+  border: 1px solid var(--pf-border);
+  background: #fff;
+  color: var(--pf-espresso);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.pf-print-btn:hover { background: var(--pf-cream); }
+
+/* ---------- Cover ---------- */
+.pf-cover {
+  position: relative;
+  text-align: center;
+  padding: 96px 0 80px;
+}
+.pf-kicker {
+  display: inline-block;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--pf-coffee);
+  background: #fff;
+  border: 1px solid var(--pf-border);
+  padding: 7px 16px;
+  border-radius: 999px;
+  margin-bottom: 30px;
+}
+.pf-title {
+  font-size: clamp(56px, 15vw, 150px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+  margin: 0;
+  color: var(--pf-espresso);
+}
+.pf-title .lich {
+  color: var(--pf-accent);
+  position: relative;
+}
+.pf-subtitle {
+  font-size: clamp(17px, 2.4vw, 21px);
+  color: var(--pf-muted);
+  max-width: 560px;
+  margin: 26px auto 0;
+}
+.pf-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 14px;
+  margin-top: 40px;
+}
+.pf-meta span {
+  background: #fff;
+  border: 1px solid var(--pf-border);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pf-coffee);
+  box-shadow: var(--pf-shadow-sm);
+}
+
+/* ---------- Overview ---------- */
+.pf-overview {
+  background: var(--pf-espresso);
+  color: var(--pf-cream);
+  border-radius: 26px;
+  padding: 48px clamp(24px, 5vw, 54px);
+  margin: 20px 0 90px;
+  box-shadow: var(--pf-shadow);
+}
+.pf-overview h2 {
+  font-size: clamp(24px, 3.4vw, 32px);
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+.pf-overview .pf-lede {
+  color: #d9c7b2;
+  margin: 0 0 30px;
+  max-width: 620px;
+}
+.pf-toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.pf-toc a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--pf-cream);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 237, 226, 0.14);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.pf-toc a:hover {
+  background: rgba(245, 237, 226, 0.08);
+  transform: translateX(3px);
+}
+.pf-toc .n {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--pf-accent);
+  color: #2b1d14;
+  font-weight: 900;
+  font-size: 15px;
+}
+.pf-toc .t { font-weight: 600; }
+
+/* ---------- Quote article ---------- */
+.pf-quote {
+  margin: 0 0 96px;
+  scroll-margin-top: 80px;
+}
+.pf-figure {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--pf-shadow);
+  border: 1px solid var(--pf-border);
+  background: var(--pf-cream);
+  aspect-ratio: 16 / 9;
+}
+.pf-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pf-figure figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  background: rgba(43, 29, 20, 0.72);
+  color: #f7ecdd;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(3px);
+}
+.pf-figure .pf-swap {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  background: rgba(224, 166, 61, 0.94);
+  color: #2b1d14;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 11px;
+  border-radius: 999px;
+}
+
+.pf-quote-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin: 30px 0 18px;
+}
+.pf-num {
+  flex: none;
+  font-size: clamp(44px, 8vw, 72px);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--pf-caramel);
+  opacity: 0.55;
+}
+.pf-quote-head .pf-q {
+  margin: 0;
+  font-size: clamp(23px, 3.6vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--pf-espresso);
+  font-weight: 800;
+}
+.pf-source {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--pf-coffee);
+  background: var(--pf-cream);
+  border: 1px solid var(--pf-border);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.pf-statement-label {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--pf-accent);
+  margin: 6px 0 10px;
+}
+.pf-statement {
+  font-size: 17.5px;
+  color: #3a2b20;
+  margin: 0;
+}
+.pf-statement.drop::first-letter {
+  float: left;
+  font-size: 58px;
+  line-height: 0.72;
+  font-weight: 900;
+  padding: 6px 10px 0 0;
+  color: var(--pf-accent);
+}
+
+/* ---------- Happiness chart ---------- */
+.pf-chart {
+  background: var(--pf-paper);
+  border: 1px solid var(--pf-border);
+  border-radius: 20px;
+  padding: 30px clamp(20px, 4vw, 34px);
+  box-shadow: var(--pf-shadow-sm);
+  margin: 26px 0 0;
+}
+.pf-chart h3 {
+  margin: 0 0 4px;
+  font-size: 19px;
+  color: var(--pf-espresso);
+}
+.pf-chart .pf-chart-sub {
+  margin: 0 0 22px;
+  font-size: 13.5px;
+  color: var(--pf-muted);
+}
+.pf-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.pf-bar-row {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.pf-bar-row .pf-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pf-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pf-bar-row .pf-rank {
+  color: var(--pf-muted);
+  font-weight: 800;
+  font-size: 12px;
+  margin-right: 6px;
+}
+.pf-track {
+  background: var(--pf-cream);
+  border-radius: 999px;
+  height: 20px;
+  overflow: hidden;
+}
+.pf-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pf-caramel), var(--pf-gold));
+}
+.pf-bar-row.is-de .pf-fill {
+  background: linear-gradient(90deg, #a5301f, var(--pf-red));
+}
+.pf-bar-row.is-de .pf-label { color: var(--pf-red); font-weight: 800; }
+.pf-score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 13.5px;
+  color: var(--pf-espresso);
+  min-width: 42px;
+  text-align: right;
+}
+.pf-chart-note {
+  margin: 20px 0 0;
+  font-size: 12.5px;
+  color: var(--pf-muted);
+  border-top: 1px dashed var(--pf-border);
+  padding-top: 14px;
+}
+
+/* ---------- Fazit ---------- */
+.pf-fazit {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  margin: 0 0 60px;
+  box-shadow: var(--pf-shadow);
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+}
+.pf-fazit img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pf-fazit .pf-fazit-body {
+  position: relative;
+  padding: clamp(28px, 5vw, 52px);
+  background: linear-gradient(0deg, rgba(30, 20, 14, 0.92) 0%, rgba(30, 20, 14, 0.6) 55%, rgba(30, 20, 14, 0) 100%);
+  color: #fbf3e8;
+  width: 100%;
+}
+.pf-fazit .pf-eyebrow {
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--pf-gold);
+}
+.pf-fazit h2 {
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 10px 0 14px;
+  letter-spacing: -0.02em;
+}
+.pf-fazit p {
+  font-size: 17px;
+  margin: 0;
+  max-width: 640px;
+  color: #f0e2d1;
+}
+
+/* ---------- Footer ---------- */
+.pf-foot {
+  text-align: center;
+  color: var(--pf-muted);
+  font-size: 13.5px;
+  padding: 10px 0 70px;
+}
+
+/* ---------- Divider ---------- */
+.pf-rule {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pf-border), transparent);
+  margin: 0 0 90px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .pf-toc { grid-template-columns: 1fr; }
+  .pf-bar-row { grid-template-columns: 116px 1fr auto; }
+  .pf-bar-row .pf-label { font-size: 12.5px; }
+  .pf-quote-head { gap: 14px; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .pf-topbar, .pf-swap { display: none !important; }
+  .pf {
+    background: #fff;
+  }
+  .pf-quote, .pf-fazit { break-inside: avoid; page-break-inside: avoid; }
+  .pf-overview { box-shadow: none; }
+  .pf-figure, .pf-chart { box-shadow: none; }
+}
