@@ -96,7 +96,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(0deg, rgba(24, 16, 11, 0.88) 0%, rgba(24, 16, 11, 0.35) 45%, rgba(24, 16, 11, 0.12) 100%);
+    linear-gradient(0deg, rgba(24, 16, 11, 0.62) 0%, rgba(24, 16, 11, 0.18) 38%, rgba(24, 16, 11, 0) 62%);
 }
 .pf-cover-body {
   position: relative;
