@@ -154,7 +154,7 @@ export default function PortfolioPage() {
         />
         <div className="pf-cover-scrim" />
         <div className="pf-wrap pf-cover-body">
-          <span className="pf-kicker">Portfolio · Religion · Klasse 10d</span>
+          <span className="pf-kicker">Portfolio · Religion · Kapitel 5 · Klasse 10d</span>
           <h1 className="pf-title">
             Glück<span className="lich">(lich)</span>
           </h1>
