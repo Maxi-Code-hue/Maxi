@@ -4,7 +4,7 @@ import "./portfolio.css";
 import PrintButton from "./PrintButton";
 
 export const metadata: Metadata = {
-  title: "Portfolio „Glück" — Maxi",
+  title: "Portfolio „Glück” — Maxi",
   description:
     "Portfolio zum Thema Glück: sieben Zitate, sieben Statements und meine Gedanken – zwischen Rennrad, Espresso und Latte Art.",
 };
@@ -27,31 +27,31 @@ const quotes: Quote[] = [
     id: "zitat-1",
     n: 1,
     short: "Nicht gleich Glück",
-    title: "„Glück ist nicht gleich Glück!"",
+    title: "„Glück ist nicht gleich Glück!”",
     source: "Buch S. 98",
     image: "/portfolio/espresso.jpg",
     alt: "Frisch gebrühter Espresso mit goldener Crema",
     caption: "Zufall vs. Können – der Morgenespresso",
     statement:
-      "Im Deutschen benutzen wir das Wort „Glück" für zwei komplett verschiedene Dinge: für Zufallsglück und für das Gefühl, glücklich zu sein. Andere Sprachen trennen das viel klarer, zum Beispiel Englisch mit „luck" und „happiness" oder Latein mit „fortuna" und „felicitas". Ich finde diese Trennung eigentlich logischer, weil die beiden Arten von Glück oft gar nichts miteinander zu tun haben. Zufallsglück kann ich nämlich nicht beeinflussen – ob beim Radrennen gutes Wetter ist, entscheide nicht ich. Ob ich mich glücklich fühle, hängt dagegen viel stärker von mir selbst ab. Ein richtig guter Espresso am Morgen ist zum Beispiel kein Zufall, sondern das Ergebnis von viel Übung – und macht mich trotzdem glücklich. Mir persönlich ist das empfundene Glück deutlich wichtiger als das Zufallsglück, weil es das ist, was man wirklich im Alltag spürt. Vielleicht wäre unsere Sprache also ehrlicher, wenn sie wie andere Sprachen zwei getrennte Wörter dafür hätte.",
+      "Im Deutschen benutzen wir das Wort „Glück” für zwei komplett verschiedene Dinge: für Zufallsglück und für das Gefühl, glücklich zu sein. Andere Sprachen trennen das viel klarer, zum Beispiel Englisch mit „luck” und „happiness” oder Latein mit „fortuna” und „felicitas”. Ich finde diese Trennung eigentlich logischer, weil die beiden Arten von Glück oft gar nichts miteinander zu tun haben. Zufallsglück kann ich nämlich nicht beeinflussen – ob beim Radrennen gutes Wetter ist, entscheide nicht ich. Ob ich mich glücklich fühle, hängt dagegen viel stärker von mir selbst ab. Ein richtig guter Espresso am Morgen ist zum Beispiel kein Zufall, sondern das Ergebnis von viel Übung – und macht mich trotzdem glücklich. Mir persönlich ist das empfundene Glück deutlich wichtiger als das Zufallsglück, weil es das ist, was man wirklich im Alltag spürt. Vielleicht wäre unsere Sprache also ehrlicher, wenn sie wie andere Sprachen zwei getrennte Wörter dafür hätte.",
   },
   {
     id: "zitat-2",
     n: 2,
     short: "Entscheidung",
-    title: "„Glück ist eine Entscheidung!"",
+    title: "„Glück ist eine Entscheidung!”",
     source: "Buch S. 99",
     image: "/portfolio/path.jpg",
     alt: "Offene Landstraße, die sich durch die Landschaft schlängelt",
     caption: "Derselbe Weg – Pech oder Chance?",
     statement:
-      "Im Märchen „Hans im Glück" tauscht Hans seinen Goldklumpen Schritt für Schritt gegen immer „wertlosere" Dinge, bis er am Ende gar nichts mehr besitzt. Wirtschaftlich gesehen ist das komplett unvernünftig – aber Hans wird mit jedem Tausch zufriedener und kommt am Ende frei und glücklich zu Hause an. Das zeigt für mich, dass Glück weniger von Besitz abhängt als von der eigenen Bewertung der Situation. Derselbe Umstand kann Pech oder Glück sein, je nachdem, wie man ihn betrachtet. Das habe ich selbst bei meiner Verletzungspause gemerkt: Erst fühlte sich das wie eine Katastrophe an, weil das Training monatelang wegfiel. Mit etwas Abstand habe ich die Pause aber auch als Chance gesehen, andere Dinge aufzubauen und den Körper in Ruhe stark zu machen. Natürlich kann man sich nicht alles „schönreden" – manche Situationen sind objektiv einfach schlecht. Aber die Haltung, mit der man auf Dinge reagiert, kann man tatsächlich selbst entscheiden – und genau darin steckt für mich der wahre Kern des Zitats.",
+      "Im Märchen „Hans im Glück” tauscht Hans seinen Goldklumpen Schritt für Schritt gegen immer „wertlosere” Dinge, bis er am Ende gar nichts mehr besitzt. Wirtschaftlich gesehen ist das komplett unvernünftig – aber Hans wird mit jedem Tausch zufriedener und kommt am Ende frei und glücklich zu Hause an. Das zeigt für mich, dass Glück weniger von Besitz abhängt als von der eigenen Bewertung der Situation. Derselbe Umstand kann Pech oder Glück sein, je nachdem, wie man ihn betrachtet. Das habe ich selbst bei meiner Verletzungspause gemerkt: Erst fühlte sich das wie eine Katastrophe an, weil das Training monatelang wegfiel. Mit etwas Abstand habe ich die Pause aber auch als Chance gesehen, andere Dinge aufzubauen und den Körper in Ruhe stark zu machen. Natürlich kann man sich nicht alles „schönreden” – manche Situationen sind objektiv einfach schlecht. Aber die Haltung, mit der man auf Dinge reagiert, kann man tatsächlich selbst entscheiden – und genau darin steckt für mich der wahre Kern des Zitats.",
   },
   {
     id: "zitat-3",
     n: 3,
     short: "Kindsein",
-    title: "„Kindsein heißt glücklich sein!"",
+    title: "„Kindsein heißt glücklich sein!”",
     source: "Buch S. 100",
     image: "/portfolio/childhood.jpg",
     alt: "Kind auf dem Fahrrad, unbeschwert unterwegs",
@@ -64,50 +64,50 @@ const quotes: Quote[] = [
     id: "zitat-4",
     n: 4,
     short: "Messbar?",
-    title: "„Glück – eine messbare Größe?"",
+    title: "„Glück – eine messbare Größe?”",
     source: "Buch S. 102",
     image: "/portfolio/nordic.jpg",
     alt: "Ruhiger nordischer See mit Wald – Finnland-Stimmung",
     caption: "Finnland – Platz 1 im Glücksbericht",
     statement:
-      "Der World Happiness Report der UN versucht jedes Jahr, das Glück ganzer Länder in Zahlen zu fassen – Finnland liegt dabei auf Platz 1, Deutschland nur auf Platz 17. Gemessen werden aber vor allem Rahmenbedingungen wie Einkommen, Gesundheit, soziale Absicherung und Freiheit. Das ist meiner Meinung nach das Hauptproblem: Man misst die Voraussetzungen für Glück, nicht das Gefühl selbst. Interessant finde ich auch die biologische Seite – laut Forschung ist etwa die Hälfte unseres Glücksempfindens genetisch veranlagt. Das heißt aber auch: Die andere Hälfte können wir selbst beeinflussen, was eigentlich eine gute Nachricht ist. Dass ein reiches Land wie Deutschland nur auf Platz 17 landet, zeigt außerdem, dass Geld allein offensichtlich nicht reicht. Die „Glücksformel" Haben + Lieben + Sein aus dem Buch fasst das gut zusammen: Materielles ist nur ein Drittel davon. Ich denke deshalb: Messbar sind höchstens die Umstände – das Glück selbst bleibt individuell und lässt sich in keiner Statistik komplett abbilden.",
+      "Der World Happiness Report der UN versucht jedes Jahr, das Glück ganzer Länder in Zahlen zu fassen – Finnland liegt dabei auf Platz 1, Deutschland nur auf Platz 17. Gemessen werden aber vor allem Rahmenbedingungen wie Einkommen, Gesundheit, soziale Absicherung und Freiheit. Das ist meiner Meinung nach das Hauptproblem: Man misst die Voraussetzungen für Glück, nicht das Gefühl selbst. Interessant finde ich auch die biologische Seite – laut Forschung ist etwa die Hälfte unseres Glücksempfindens genetisch veranlagt. Das heißt aber auch: Die andere Hälfte können wir selbst beeinflussen, was eigentlich eine gute Nachricht ist. Dass ein reiches Land wie Deutschland nur auf Platz 17 landet, zeigt außerdem, dass Geld allein offensichtlich nicht reicht. Die „Glücksformel” Haben + Lieben + Sein aus dem Buch fasst das gut zusammen: Materielles ist nur ein Drittel davon. Ich denke deshalb: Messbar sind höchstens die Umstände – das Glück selbst bleibt individuell und lässt sich in keiner Statistik komplett abbilden.",
   },
   {
     id: "zitat-5",
     n: 5,
     short: "Lernbar?",
-    title: "„Ist Glücklichsein lernbar?"",
+    title: "„Ist Glücklichsein lernbar?”",
     source: "Buch S. 103",
     image: "/portfolio/latte-art.jpg",
     alt: "Latte Art mit Rosetta-Muster in einer Tasse",
     caption: "Latte Art – durch Wiederholung besser",
     personal: true,
     statement:
-      "Der Glücksforscher Karlheinz Ruckriegel sagt klar: Ja, Glück ist zu einem großen Teil trainierbar. Seine Strategien klingen erst mal nach typischem Ratgeber – Dankbarkeit üben, realistische Ziele setzen, soziale Kontakte pflegen, Vergleiche vermeiden. Aus eigener Erfahrung weiß ich aber, dass an mehreren Punkten wirklich etwas dran ist. Beim Latte-Art-Üben habe ich zum Beispiel gemerkt: Wenn ich mich ständig mit Profis vergleiche, bin ich nur frustriert. Sobald ich stattdessen auf meinen eigenen Fortschritt schaue und mir Pausen gönne, werden die Ergebnisse besser – und ich bin zufriedener. Auch der Punkt „für den Körper sorgen" stimmt: Nach dem Training ist meine Stimmung fast immer besser als davor. Glücklichsein funktioniert also ähnlich wie Sport – durch Wiederholung wird man besser darin. Nicht alles ist lernbar, weil Gene und Umstände mitspielen, aber deutlich mehr, als die meisten denken.",
+      "Der Glücksforscher Karlheinz Ruckriegel sagt klar: Ja, Glück ist zu einem großen Teil trainierbar. Seine Strategien klingen erst mal nach typischem Ratgeber – Dankbarkeit üben, realistische Ziele setzen, soziale Kontakte pflegen, Vergleiche vermeiden. Aus eigener Erfahrung weiß ich aber, dass an mehreren Punkten wirklich etwas dran ist. Beim Latte-Art-Üben habe ich zum Beispiel gemerkt: Wenn ich mich ständig mit Profis vergleiche, bin ich nur frustriert. Sobald ich stattdessen auf meinen eigenen Fortschritt schaue und mir Pausen gönne, werden die Ergebnisse besser – und ich bin zufriedener. Auch der Punkt „für den Körper sorgen” stimmt: Nach dem Training ist meine Stimmung fast immer besser als davor. Glücklichsein funktioniert also ähnlich wie Sport – durch Wiederholung wird man besser darin. Nicht alles ist lernbar, weil Gene und Umstände mitspielen, aber deutlich mehr, als die meisten denken.",
   },
   {
     id: "zitat-6",
     n: 6,
     short: "Teilen",
-    title: "„Glück ist nur dann real, wenn man es teilt!"",
+    title: "„Glück ist nur dann real, wenn man es teilt!”",
     source: "Buch S. 104",
     image: "/portfolio/friends.jpg",
     alt: "Freunde gemeinsam unterwegs bei einer Ausfahrt",
     caption: "Ein Moment mit Freunden schlägt jeden Like",
     statement:
-      "Auf Social Media wird fast nur die glückliche Fassade gepostet – der Text nennt das treffend „Happy-Life-Konzept". In den Umfrage-Zitaten geben sogar Jugendliche zu, dass sie auf Selfies lächeln, obwohl es ihnen gerade schlecht geht. Ich poste selbst regelmäßig Inhalte und kenne diesen Druck: Man wählt natürlich das beste Bild aus, nicht das ehrlichste. Trotzdem glaube ich, dass am Zitat etwas Wahres dran ist – nur eben anders, als Instagram es vormacht. Echtes Teilen bedeutet für mich, einen Moment gemeinsam mit anderen zu erleben, nicht ihn für Fremde zu inszenieren. Eine gelungene Ausfahrt mit Freunden fühlt sich intensiver an als jede Zahl an Likes. Das Posten an sich ist nicht das Problem – problematisch wird es, wenn man den Moment nur noch für das Foto erlebt. Glück wird also durch Menschen realer, nicht durch Reichweite – und diese Grenze muss jeder für sich selbst ziehen.",
+      "Auf Social Media wird fast nur die glückliche Fassade gepostet – der Text nennt das treffend „Happy-Life-Konzept”. In den Umfrage-Zitaten geben sogar Jugendliche zu, dass sie auf Selfies lächeln, obwohl es ihnen gerade schlecht geht. Ich poste selbst regelmäßig Inhalte und kenne diesen Druck: Man wählt natürlich das beste Bild aus, nicht das ehrlichste. Trotzdem glaube ich, dass am Zitat etwas Wahres dran ist – nur eben anders, als Instagram es vormacht. Echtes Teilen bedeutet für mich, einen Moment gemeinsam mit anderen zu erleben, nicht ihn für Fremde zu inszenieren. Eine gelungene Ausfahrt mit Freunden fühlt sich intensiver an als jede Zahl an Likes. Das Posten an sich ist nicht das Problem – problematisch wird es, wenn man den Moment nur noch für das Foto erlebt. Glück wird also durch Menschen realer, nicht durch Reichweite – und diese Grenze muss jeder für sich selbst ziehen.",
   },
   {
     id: "zitat-7",
     n: 7,
     short: "Unglücklich sein",
-    title: "„Auch unglücklich sein kann Glück bedeuten!"",
+    title: "„Auch unglücklich sein kann Glück bedeuten!”",
     source: "Buch S. 105",
     image: "/portfolio/moody.jpg",
     alt: "Dramatischer Himmel mit Regenwolken und etwas Sonne",
     caption: "Erst der Kontrast macht die guten Momente wertvoll",
     statement:
-      "Auf den ersten Blick klingt das Zitat widersprüchlich – wie soll Unglücklichsein bitte Glück bedeuten? Der Text von Wilhelm Schmid zeigt aber, dass Melancholie („tristitia sublima") eine wertvolle Seite hat: Sie macht sensibel, nachdenklich und oft kreativ. Viele der größten Kunstwerke, etwa von Beethoven, sind gerade nicht aus purer Zufriedenheit entstanden. Ich verstehe das so: Ohne Tiefpunkte könnte man Höhepunkte gar nicht als solche erkennen. Frust nach einem schlechten Training oder misslungenen Versuchen ist unangenehm – aber genau dieser Frust motiviert mich, besser zu werden. Wer dagegen krampfhaft versucht, immer glücklich zu sein, setzt sich nur unter Druck und scheitert daran erst recht. Traurige Phasen gehören zum Leben dazu und sind kein Zeichen von Versagen. Dauerglück wäre am Ende sogar langweilig – erst der Kontrast macht die glücklichen Momente wertvoll.",
+      "Auf den ersten Blick klingt das Zitat widersprüchlich – wie soll Unglücklichsein bitte Glück bedeuten? Der Text von Wilhelm Schmid zeigt aber, dass Melancholie („tristitia sublima”) eine wertvolle Seite hat: Sie macht sensibel, nachdenklich und oft kreativ. Viele der größten Kunstwerke, etwa von Beethoven, sind gerade nicht aus purer Zufriedenheit entstanden. Ich verstehe das so: Ohne Tiefpunkte könnte man Höhepunkte gar nicht als solche erkennen. Frust nach einem schlechten Training oder misslungenen Versuchen ist unangenehm – aber genau dieser Frust motiviert mich, besser zu werden. Wer dagegen krampfhaft versucht, immer glücklich zu sein, setzt sich nur unter Druck und scheitert daran erst recht. Traurige Phasen gehören zum Leben dazu und sind kein Zeichen von Versagen. Dauerglück wäre am Ende sogar langweilig – erst der Kontrast macht die glücklichen Momente wertvoll.",
   },
 ];
 
