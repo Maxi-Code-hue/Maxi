@@ -46,8 +46,8 @@ const quotes: Quote[] = [
     source: "Buch S. 99",
     image: "/portfolio/decision.jpg",
     theme: "path",
-    alt: "Rennrad auf einer offenen Straße im Morgenlicht",
-    caption: "Derselbe Weg – Pech oder Chance?",
+    alt: "Maxi beim Zeitfahren auf der Radrennbahn",
+    caption: "Ich beim Zeitfahren – zurück nach der Pause",
     statement:
       "Im Märchen „Hans im Glück” tauscht Hans seinen Goldklumpen Schritt für Schritt gegen immer „wertlosere” Dinge, bis er am Ende gar nichts mehr besitzt. Wirtschaftlich gesehen ist das komplett unvernünftig – aber Hans wird mit jedem Tausch zufriedener und kommt am Ende frei und glücklich zu Hause an. Das zeigt für mich, dass Glück weniger von Besitz abhängt als von der eigenen Bewertung der Situation. Derselbe Umstand kann Pech oder Glück sein, je nachdem, wie man ihn betrachtet. Das habe ich selbst bei meiner Verletzungspause gemerkt: Erst fühlte sich das wie eine Katastrophe an, weil das Training monatelang wegfiel. Mit etwas Abstand habe ich die Pause aber auch als Chance gesehen, andere Dinge aufzubauen und den Körper in Ruhe stark zu machen. Natürlich kann man sich nicht alles „schönreden” – manche Situationen sind objektiv einfach schlecht. Aber die Haltung, mit der man auf Dinge reagiert, kann man tatsächlich selbst entscheiden – und genau darin steckt für mich der wahre Kern des Zitats.",
   },
