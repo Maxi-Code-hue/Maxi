@@ -8,7 +8,7 @@ import Mindmap from "./Mindmap";
 export const metadata: Metadata = {
   title: "Portfolio „Glück” — Maxi",
   description:
-    "Portfolio zum Thema Glück: sieben Zitate, sieben Statements und meine Gedanken – zwischen Rennrad, Espresso und Latte Art.",
+    "Portfolio zum Thema Glück: sieben Zitate, sieben Statements und meine Gedanken.",
 };
 
 type Quote = {
@@ -33,11 +33,11 @@ const quotes: Quote[] = [
     title: "„Glück ist nicht gleich Glück!”",
     source: "Buch S. 98",
     image: "/portfolio/berge.jpg",
-    theme: "espresso",
+    theme: "path",
     alt: "Schneebedeckte Gipfel unter einem Sternenhimmel",
     caption: "Glück haben – oder glücklich sein?",
     statement:
-      "Im Deutschen benutzen wir das Wort „Glück” für zwei komplett verschiedene Dinge: für Zufallsglück und für das Gefühl, glücklich zu sein. Andere Sprachen trennen das viel klarer, zum Beispiel Englisch mit „luck” und „happiness” oder Latein mit „fortuna” und „felicitas”. Ich finde diese Trennung eigentlich logischer, weil die beiden Arten von Glück oft gar nichts miteinander zu tun haben. Zufallsglück kann ich nämlich nicht beeinflussen – ob beim Radrennen gutes Wetter ist, entscheide nicht ich. Ob ich mich glücklich fühle, hängt dagegen viel stärker von mir selbst ab. Ein richtig guter Espresso am Morgen ist zum Beispiel kein Zufall, sondern das Ergebnis von viel Übung – und macht mich trotzdem glücklich. Mir persönlich ist das empfundene Glück deutlich wichtiger als das Zufallsglück, weil es das ist, was man wirklich im Alltag spürt. Vielleicht wäre unsere Sprache also ehrlicher, wenn sie wie andere Sprachen zwei getrennte Wörter dafür hätte.",
+      "Im Deutschen benutzen wir das Wort „Glück” für zwei komplett verschiedene Dinge: für Zufallsglück und für das Gefühl, glücklich zu sein. Andere Sprachen trennen das viel klarer, zum Beispiel Englisch mit „luck” und „happiness” oder Latein mit „fortuna” und „felicitas”. Ich finde diese Trennung eigentlich logischer, weil die beiden Arten von Glück oft gar nichts miteinander zu tun haben. Zufallsglück kann nämlich niemand beeinflussen – ob am Wandertag die Sonne scheint oder ob man im Los eine Niete zieht, entscheidet allein der Zufall. Ob ich mich glücklich fühle, hängt dagegen viel stärker von mir selbst ab. Eine gute Note nach wochenlangem Lernen ist zum Beispiel kein Zufall, sondern das Ergebnis von Arbeit – und macht trotzdem glücklich. Mir persönlich ist das empfundene Glück deutlich wichtiger als das Zufallsglück, weil es das ist, was man wirklich im Alltag spürt. Vielleicht wäre unsere Sprache also ehrlicher, wenn sie wie andere Sprachen zwei getrennte Wörter dafür hätte.",
   },
   {
     id: "zitat-2",
@@ -63,7 +63,7 @@ const quotes: Quote[] = [
     alt: "Kanufahrt auf einem stillen Bergsee in der Abenddämmerung",
     caption: "Einfach im Moment sein – wie als Kind",
     statement:
-      "Der Text von Eda Muthsbas beschreibt, wie Kinder komplett im Moment leben: Sie spüren den Wind, staunen über Kleinigkeiten und brauchen dafür kein Smartphone. Erwachsene und auch wir Jugendliche denken dagegen ständig an die Zukunft, an Leistung und daran, wie wir auf andere wirken. Ich glaube, Kinder sind vor allem deshalb glücklicher, weil sie sich weniger vergleichen und keinen Druck spüren. Als Kind bin ich einfach Rad gefahren, weil es Spaß gemacht hat – heute steckt hinter fast jeder Fahrt ein Trainingsplan und ein Ziel. Trotzdem finde ich es zu einfach zu sagen, dass nur Kinder glücklich sein können. Man kann sich die kindliche Art der Wahrnehmung nämlich zurückholen, indem man bewusst im Moment bleibt. Bei mir funktioniert das zum Beispiel beim Kaffeemachen: Da zählt nur der eine Bezug, alles andere ist kurz egal. Kindsein ist also kein Alter, sondern eher eine Fähigkeit – und die kann man auch als Jugendlicher oder Erwachsener behalten.",
+      "Der Text von Eda Muthsbas beschreibt, wie Kinder komplett im Moment leben: Sie spüren den Wind, staunen über Kleinigkeiten und brauchen dafür kein Smartphone. Erwachsene und auch wir Jugendliche denken dagegen ständig an die Zukunft, an Leistung und daran, wie wir auf andere wirken. Ich glaube, Kinder sind vor allem deshalb glücklicher, weil sie sich weniger vergleichen und keinen Druck spüren. Als Kind spielt man einfach, weil es Spaß macht – später steckt hinter fast allem ein Plan und ein Ziel. Trotzdem finde ich es zu einfach zu sagen, dass nur Kinder glücklich sein können. Man kann sich die kindliche Art der Wahrnehmung nämlich zurückholen, indem man bewusst im Moment bleibt – zum Beispiel, wenn man ganz in einer Sache versinkt und alles andere kurz egal ist. Kindsein ist also kein Alter, sondern eher eine Fähigkeit – und die kann man auch als Jugendlicher oder Erwachsener behalten.",
   },
   {
     id: "zitat-4",
@@ -85,11 +85,11 @@ const quotes: Quote[] = [
     title: "„Ist Glücklichsein lernbar?”",
     source: "Buch S. 103",
     image: "/portfolio/lernbar.jpg",
-    theme: "latte",
+    theme: "path",
     alt: "Wanderer auf einem verschneiten Berggrat mit Blick auf die Gipfel",
     caption: "Schritt für Schritt – Glück lässt sich üben",
     statement:
-      "Der Glücksforscher Karlheinz Ruckriegel sagt klar: Ja, Glück ist zu einem großen Teil trainierbar. Seine Strategien klingen erst mal nach typischem Ratgeber – Dankbarkeit üben, realistische Ziele setzen, soziale Kontakte pflegen, Vergleiche vermeiden. Aus eigener Erfahrung weiß ich aber, dass an mehreren Punkten wirklich etwas dran ist. Beim Latte-Art-Üben habe ich zum Beispiel gemerkt: Wenn ich mich ständig mit Profis vergleiche, bin ich nur frustriert. Sobald ich stattdessen auf meinen eigenen Fortschritt schaue und mir Pausen gönne, werden die Ergebnisse besser – und ich bin zufriedener. Auch der Punkt „für den Körper sorgen” stimmt: Nach dem Training ist meine Stimmung fast immer besser als davor. Glücklichsein funktioniert also ähnlich wie Sport – durch Wiederholung wird man besser darin. Nicht alles ist lernbar, weil Gene und Umstände mitspielen, aber deutlich mehr, als die meisten denken.",
+      "Der Glücksforscher Karlheinz Ruckriegel sagt klar: Ja, Glück ist zu einem großen Teil trainierbar. Seine Strategien klingen erst mal nach typischem Ratgeber – Dankbarkeit üben, realistische Ziele setzen, soziale Kontakte pflegen, Vergleiche vermeiden. An mehreren Punkten ist aber wirklich etwas dran. Wer sich ständig mit denen vergleicht, die schon perfekt sind, ist am Ende nur frustriert. Sobald man stattdessen auf den eigenen Fortschritt schaut und sich auch Pausen gönnt, werden die Ergebnisse besser – und man ist zufriedener. Auch der Punkt „für den Körper sorgen” stimmt: Nach Bewegung ist die Stimmung fast immer besser als davor. Glücklichsein funktioniert also wie ein Muskel – durch Wiederholung wird man besser darin. Nicht alles ist lernbar, weil Gene und Umstände mitspielen, aber deutlich mehr, als die meisten denken.",
   },
   {
     id: "zitat-6",
@@ -102,7 +102,7 @@ const quotes: Quote[] = [
     alt: "Türkisfarbener Bergsee in der Abenddämmerung",
     caption: "Manche Momente will man einfach teilen",
     statement:
-      "Auf Social Media wird fast nur die glückliche Fassade gepostet – der Text nennt das treffend „Happy-Life-Konzept”. In den Umfrage-Zitaten geben sogar Jugendliche zu, dass sie auf Selfies lächeln, obwohl es ihnen gerade schlecht geht. Ich poste selbst regelmäßig Inhalte und kenne diesen Druck: Man wählt natürlich das beste Bild aus, nicht das ehrlichste. Trotzdem glaube ich, dass am Zitat etwas Wahres dran ist – nur eben anders, als Instagram es vormacht. Echtes Teilen bedeutet für mich, einen Moment gemeinsam mit anderen zu erleben, nicht ihn für Fremde zu inszenieren. Eine gelungene Ausfahrt mit Freunden fühlt sich intensiver an als jede Zahl an Likes. Das Posten an sich ist nicht das Problem – problematisch wird es, wenn man den Moment nur noch für das Foto erlebt. Glück wird also durch Menschen realer, nicht durch Reichweite – und diese Grenze muss jeder für sich selbst ziehen.",
+      "Auf Social Media wird fast nur die glückliche Fassade gepostet – der Text nennt das treffend „Happy-Life-Konzept”. In den Umfrage-Zitaten geben sogar Jugendliche zu, dass sie auf Selfies lächeln, obwohl es ihnen gerade schlecht geht. Diesen Druck kennt fast jeder: Man wählt natürlich das beste Bild aus, nicht das ehrlichste. Trotzdem glaube ich, dass am Zitat etwas Wahres dran ist – nur eben anders, als Instagram es vormacht. Echtes Teilen bedeutet, einen Moment gemeinsam mit anderen zu erleben, nicht ihn für Fremde zu inszenieren. Ein gelungener Tag mit Freunden fühlt sich intensiver an als jede Zahl an Likes. Das Posten an sich ist nicht das Problem – problematisch wird es, wenn man den Moment nur noch für das Foto erlebt. Glück wird also durch Menschen realer, nicht durch Reichweite – und diese Grenze muss jeder für sich selbst ziehen.",
   },
   {
     id: "zitat-7",
@@ -115,7 +115,7 @@ const quotes: Quote[] = [
     alt: "Nachdenkliches Schwarz-Weiß-Porträt mit Haaren im Wind",
     caption: "Melancholie – „tristitia sublima“",
     statement:
-      "Auf den ersten Blick klingt das Zitat widersprüchlich – wie soll Unglücklichsein bitte Glück bedeuten? Der Text von Wilhelm Schmid zeigt aber, dass Melancholie („tristitia sublima”) eine wertvolle Seite hat: Sie macht sensibel, nachdenklich und oft kreativ. Viele der größten Kunstwerke, etwa von Beethoven, sind gerade nicht aus purer Zufriedenheit entstanden. Ich verstehe das so: Ohne Tiefpunkte könnte man Höhepunkte gar nicht als solche erkennen. Frust nach einem schlechten Training oder misslungenen Versuchen ist unangenehm – aber genau dieser Frust motiviert mich, besser zu werden. Wer dagegen krampfhaft versucht, immer glücklich zu sein, setzt sich nur unter Druck und scheitert daran erst recht. Traurige Phasen gehören zum Leben dazu und sind kein Zeichen von Versagen. Dauerglück wäre am Ende sogar langweilig – erst der Kontrast macht die glücklichen Momente wertvoll.",
+      "Auf den ersten Blick klingt das Zitat widersprüchlich – wie soll Unglücklichsein bitte Glück bedeuten? Der Text von Wilhelm Schmid zeigt aber, dass Melancholie („tristitia sublima”) eine wertvolle Seite hat: Sie macht sensibel, nachdenklich und oft kreativ. Viele der größten Kunstwerke, etwa von Beethoven, sind gerade nicht aus purer Zufriedenheit entstanden. Ich verstehe das so: Ohne Tiefpunkte könnte man Höhepunkte gar nicht als solche erkennen. Frust nach einem Misserfolg ist unangenehm – aber genau dieser Frust kann einen motivieren, es beim nächsten Mal besser zu machen. Wer dagegen krampfhaft versucht, immer glücklich zu sein, setzt sich nur unter Druck und scheitert daran erst recht. Traurige Phasen gehören zum Leben dazu und sind kein Zeichen von Versagen. Dauerglück wäre am Ende sogar langweilig – erst der Kontrast macht die glücklichen Momente wertvoll.",
   },
 ];
 

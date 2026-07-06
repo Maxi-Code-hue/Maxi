@@ -488,6 +488,18 @@
   .pf {
     background: #fff;
   }
+  /* gradients band in PDF output — use a crisp solid panel behind the
+     cover text instead of the full-bleed scrim */
+  .pf-cover-scrim { display: none; }
+  .pf-cover-body {
+    background: rgba(24, 16, 11, 0.82);
+    border-radius: 20px;
+    padding: 30px 34px 34px;
+    margin-bottom: 36px;
+    max-width: 720px;
+  }
+  .pf-title { text-shadow: none; }
+  .pf-kicker { backdrop-filter: none; background: rgba(24, 16, 11, 0.9); }
   .pf-quote, .pf-fazit { break-inside: avoid; page-break-inside: avoid; }
   .pf-overview {
     box-shadow: none;
