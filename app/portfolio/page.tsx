@@ -113,8 +113,8 @@ const quotes: Quote[] = [
     source: "Buch S. 105",
     image: "/portfolio/moody.jpg",
     theme: "moody",
-    alt: "Radfahrer unter einem dramatischen Abendhimmel",
-    caption: "Erst der Kontrast macht die guten Momente wertvoll",
+    alt: "Nachdenkliches Schwarz-Weiß-Porträt mit Haaren im Wind",
+    caption: "Melancholie – „tristitia sublima“",
     statement:
       "Auf den ersten Blick klingt das Zitat widersprüchlich – wie soll Unglücklichsein bitte Glück bedeuten? Der Text von Wilhelm Schmid zeigt aber, dass Melancholie („tristitia sublima”) eine wertvolle Seite hat: Sie macht sensibel, nachdenklich und oft kreativ. Viele der größten Kunstwerke, etwa von Beethoven, sind gerade nicht aus purer Zufriedenheit entstanden. Ich verstehe das so: Ohne Tiefpunkte könnte man Höhepunkte gar nicht als solche erkennen. Frust nach einem schlechten Training oder misslungenen Versuchen ist unangenehm – aber genau dieser Frust motiviert mich, besser zu werden. Wer dagegen krampfhaft versucht, immer glücklich zu sein, setzt sich nur unter Druck und scheitert daran erst recht. Traurige Phasen gehören zum Leben dazu und sind kein Zeichen von Versagen. Dauerglück wäre am Ende sogar langweilig – erst der Kontrast macht die glücklichen Momente wertvoll.",
   },
@@ -147,15 +147,21 @@ export default function PortfolioPage() {
 
       {/* Cover */}
       <header className="pf-cover">
-        <div className="pf-wrap">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="pf-cover-img"
+          src="/portfolio/cover.jpg"
+          alt="Person balanciert glücklich auf einem Felsen hoch über einem Fjord"
+        />
+        <div className="pf-cover-scrim" />
+        <div className="pf-wrap pf-cover-body">
           <span className="pf-kicker">Portfolio · Deutsch · Klasse 10</span>
           <h1 className="pf-title">
-            GLÜCK<span className="lich">(LICH)</span>
+            Glück<span className="lich">(lich)</span>
           </h1>
           <p className="pf-subtitle">
             Sieben Zitate beleuchten jeweils eine andere Seite des Glücks –
-            zusammen ergeben sie ein Gesamtbild. Zwischen Rennrad, Espresso und
-            Latte Art.
+            zusammen ergeben sie ein Gesamtbild.
           </p>
           <div className="pf-meta">
             <span>7 Zitate</span>
@@ -252,8 +258,8 @@ export default function PortfolioPage() {
         {/* Fazit */}
         <section className="pf-fazit" aria-label="Fazit">
           <PhotoOrPoster
-            src="/portfolio/cycling.jpg"
-            alt="Ausfahrt mit dem Rennrad in der Abendsonne"
+            src="/portfolio/fazit.jpg"
+            alt="Person steht in der Morgensonne auf einem Felsbogen am Meer"
             theme="sunset-road"
           />
           <div className="pf-fazit-body">
