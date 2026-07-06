@@ -170,6 +170,19 @@
   margin: 0 0 30px;
   max-width: 620px;
 }
+.pf-mindmap {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 8px;
+}
+.pf-mindmap a {
+  cursor: pointer;
+}
+.pf-mindmap a:hover circle {
+  fill: #f0be62;
+}
+
 .pf-toc {
   list-style: none;
   padding: 0;
@@ -476,6 +489,11 @@
     background: #fff;
   }
   .pf-quote, .pf-fazit { break-inside: avoid; page-break-inside: avoid; }
-  .pf-overview { box-shadow: none; }
+  .pf-overview {
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-top: 40px;
+  }
   .pf-figure, .pf-chart { box-shadow: none; }
 }

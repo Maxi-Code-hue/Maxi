@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./portfolio.css";
 import PrintButton from "./PrintButton";
 import PhotoOrPoster from "./PhotoOrPoster";
+import Mindmap from "./Mindmap";
 
 export const metadata: Metadata = {
   title: "Portfolio „Glück” — Maxi",
@@ -57,11 +58,10 @@ const quotes: Quote[] = [
     short: "Kindsein",
     title: "„Kindsein heißt glücklich sein!”",
     source: "Buch S. 100",
-    image: null,
+    image: "/portfolio/childhood.jpg",
     theme: "childhood",
-    alt: "Platzhalter für ein Kindheitsfoto auf dem Fahrrad",
-    caption: "Einfach fahren, weil es Spaß macht",
-    personal: true,
+    alt: "Kanufahrt auf einem stillen Bergsee in der Abenddämmerung",
+    caption: "Einfach im Moment sein – wie als Kind",
     statement:
       "Der Text von Eda Muthsbas beschreibt, wie Kinder komplett im Moment leben: Sie spüren den Wind, staunen über Kleinigkeiten und brauchen dafür kein Smartphone. Erwachsene und auch wir Jugendliche denken dagegen ständig an die Zukunft, an Leistung und daran, wie wir auf andere wirken. Ich glaube, Kinder sind vor allem deshalb glücklicher, weil sie sich weniger vergleichen und keinen Druck spüren. Als Kind bin ich einfach Rad gefahren, weil es Spaß gemacht hat – heute steckt hinter fast jeder Fahrt ein Trainingsplan und ein Ziel. Trotzdem finde ich es zu einfach zu sagen, dass nur Kinder glücklich sein können. Man kann sich die kindliche Art der Wahrnehmung nämlich zurückholen, indem man bewusst im Moment bleibt. Bei mir funktioniert das zum Beispiel beim Kaffeemachen: Da zählt nur der eine Bezug, alles andere ist kurz egal. Kindsein ist also kein Alter, sondern eher eine Fähigkeit – und die kann man auch als Jugendlicher oder Erwachsener behalten.",
   },
@@ -98,10 +98,10 @@ const quotes: Quote[] = [
     short: "Teilen",
     title: "„Glück ist nur dann real, wenn man es teilt!”",
     source: "Buch S. 104",
-    image: "/portfolio/friends.jpg",
+    image: "/portfolio/teilen.jpg",
     theme: "friends",
-    alt: "Freunde gemeinsam unterwegs bei einer Ausfahrt",
-    caption: "Ein Moment mit Freunden schlägt jeden Like",
+    alt: "Kaffee und Muffins auf einem Tisch – ein Moment zum Teilen",
+    caption: "Am Tisch geteilt statt im Feed gepostet",
     statement:
       "Auf Social Media wird fast nur die glückliche Fassade gepostet – der Text nennt das treffend „Happy-Life-Konzept”. In den Umfrage-Zitaten geben sogar Jugendliche zu, dass sie auf Selfies lächeln, obwohl es ihnen gerade schlecht geht. Ich poste selbst regelmäßig Inhalte und kenne diesen Druck: Man wählt natürlich das beste Bild aus, nicht das ehrlichste. Trotzdem glaube ich, dass am Zitat etwas Wahres dran ist – nur eben anders, als Instagram es vormacht. Echtes Teilen bedeutet für mich, einen Moment gemeinsam mit anderen zu erleben, nicht ihn für Fremde zu inszenieren. Eine gelungene Ausfahrt mit Freunden fühlt sich intensiver an als jede Zahl an Likes. Das Posten an sich ist nicht das Problem – problematisch wird es, wenn man den Moment nur noch für das Foto erlebt. Glück wird also durch Menschen realer, nicht durch Reichweite – und diese Grenze muss jeder für sich selbst ziehen.",
   },
@@ -179,16 +179,7 @@ export default function PortfolioPage() {
             Jedes Zitat beleuchtet eine andere Seite des Themas. Springe direkt
             zu dem Gedanken, der dich interessiert.
           </p>
-          <ul className="pf-toc">
-            {quotes.map((q) => (
-              <li key={q.id}>
-                <a href={`#${q.id}`}>
-                  <span className="n">{q.n}</span>
-                  <span className="t">{q.short}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <Mindmap />
         </section>
 
         {/* Quotes */}
