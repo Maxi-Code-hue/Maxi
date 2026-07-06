@@ -500,12 +500,27 @@
   }
   .pf-title { text-shadow: none; }
   .pf-kicker { backdrop-filter: none; background: rgba(24, 16, 11, 0.9); }
-  .pf-quote, .pf-fazit { break-inside: avoid; page-break-inside: avoid; }
-  .pf-overview {
-    box-shadow: none;
+  /* one section per page */
+  .pf-quote, .pf-fazit, .pf-overview {
+    break-before: page;
+    page-break-before: always;
     break-inside: avoid;
     page-break-inside: avoid;
-    margin-top: 40px;
   }
+  .pf-quote { margin-bottom: 0; }
+  /* the happiness chart gets its own page, like in the paper original */
+  .pf-chart {
+    break-before: page;
+    page-break-before: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .pf-overview {
+    box-shadow: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .pf-rule { display: none; }
+  .pf-fazit { margin-bottom: 20px; }
   .pf-figure, .pf-chart { box-shadow: none; }
 }
