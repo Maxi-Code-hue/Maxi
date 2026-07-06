@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./portfolio.css";
 import PrintButton from "./PrintButton";
+import PhotoOrPoster from "./PhotoOrPoster";
 
 export const metadata: Metadata = {
   title: "Portfolio „Glück” — Maxi",
@@ -15,7 +16,8 @@ type Quote = {
   short: string;
   title: string;
   source: string;
-  image: string;
+  image: string | null;
+  theme: string;
   alt: string;
   caption: string;
   personal?: boolean;
@@ -30,8 +32,9 @@ const quotes: Quote[] = [
     title: "„Glück ist nicht gleich Glück!”",
     source: "Buch S. 98",
     image: "/portfolio/espresso.jpg",
-    alt: "Frisch gebrühter Espresso mit goldener Crema",
-    caption: "Zufall vs. Können – der Morgenespresso",
+    theme: "espresso",
+    alt: "Tasse Kaffee in einem gemütlichen Café",
+    caption: "Zufall vs. Können – der Morgenkaffee",
     statement:
       "Im Deutschen benutzen wir das Wort „Glück” für zwei komplett verschiedene Dinge: für Zufallsglück und für das Gefühl, glücklich zu sein. Andere Sprachen trennen das viel klarer, zum Beispiel Englisch mit „luck” und „happiness” oder Latein mit „fortuna” und „felicitas”. Ich finde diese Trennung eigentlich logischer, weil die beiden Arten von Glück oft gar nichts miteinander zu tun haben. Zufallsglück kann ich nämlich nicht beeinflussen – ob beim Radrennen gutes Wetter ist, entscheide nicht ich. Ob ich mich glücklich fühle, hängt dagegen viel stärker von mir selbst ab. Ein richtig guter Espresso am Morgen ist zum Beispiel kein Zufall, sondern das Ergebnis von viel Übung – und macht mich trotzdem glücklich. Mir persönlich ist das empfundene Glück deutlich wichtiger als das Zufallsglück, weil es das ist, was man wirklich im Alltag spürt. Vielleicht wäre unsere Sprache also ehrlicher, wenn sie wie andere Sprachen zwei getrennte Wörter dafür hätte.",
   },
@@ -41,8 +44,9 @@ const quotes: Quote[] = [
     short: "Entscheidung",
     title: "„Glück ist eine Entscheidung!”",
     source: "Buch S. 99",
-    image: "/portfolio/path.jpg",
-    alt: "Offene Landstraße, die sich durch die Landschaft schlängelt",
+    image: "/portfolio/decision.jpg",
+    theme: "path",
+    alt: "Rennrad auf einer offenen Straße im Morgenlicht",
     caption: "Derselbe Weg – Pech oder Chance?",
     statement:
       "Im Märchen „Hans im Glück” tauscht Hans seinen Goldklumpen Schritt für Schritt gegen immer „wertlosere” Dinge, bis er am Ende gar nichts mehr besitzt. Wirtschaftlich gesehen ist das komplett unvernünftig – aber Hans wird mit jedem Tausch zufriedener und kommt am Ende frei und glücklich zu Hause an. Das zeigt für mich, dass Glück weniger von Besitz abhängt als von der eigenen Bewertung der Situation. Derselbe Umstand kann Pech oder Glück sein, je nachdem, wie man ihn betrachtet. Das habe ich selbst bei meiner Verletzungspause gemerkt: Erst fühlte sich das wie eine Katastrophe an, weil das Training monatelang wegfiel. Mit etwas Abstand habe ich die Pause aber auch als Chance gesehen, andere Dinge aufzubauen und den Körper in Ruhe stark zu machen. Natürlich kann man sich nicht alles „schönreden” – manche Situationen sind objektiv einfach schlecht. Aber die Haltung, mit der man auf Dinge reagiert, kann man tatsächlich selbst entscheiden – und genau darin steckt für mich der wahre Kern des Zitats.",
@@ -53,8 +57,9 @@ const quotes: Quote[] = [
     short: "Kindsein",
     title: "„Kindsein heißt glücklich sein!”",
     source: "Buch S. 100",
-    image: "/portfolio/childhood.jpg",
-    alt: "Kind auf dem Fahrrad, unbeschwert unterwegs",
+    image: null,
+    theme: "childhood",
+    alt: "Platzhalter für ein Kindheitsfoto auf dem Fahrrad",
     caption: "Einfach fahren, weil es Spaß macht",
     personal: true,
     statement:
@@ -67,7 +72,8 @@ const quotes: Quote[] = [
     title: "„Glück – eine messbare Größe?”",
     source: "Buch S. 102",
     image: "/portfolio/nordic.jpg",
-    alt: "Ruhiger nordischer See mit Wald – Finnland-Stimmung",
+    theme: "path",
+    alt: "Weites Bergtal mit Nadelwald – nordische Stimmung",
     caption: "Finnland – Platz 1 im Glücksbericht",
     statement:
       "Der World Happiness Report der UN versucht jedes Jahr, das Glück ganzer Länder in Zahlen zu fassen – Finnland liegt dabei auf Platz 1, Deutschland nur auf Platz 17. Gemessen werden aber vor allem Rahmenbedingungen wie Einkommen, Gesundheit, soziale Absicherung und Freiheit. Das ist meiner Meinung nach das Hauptproblem: Man misst die Voraussetzungen für Glück, nicht das Gefühl selbst. Interessant finde ich auch die biologische Seite – laut Forschung ist etwa die Hälfte unseres Glücksempfindens genetisch veranlagt. Das heißt aber auch: Die andere Hälfte können wir selbst beeinflussen, was eigentlich eine gute Nachricht ist. Dass ein reiches Land wie Deutschland nur auf Platz 17 landet, zeigt außerdem, dass Geld allein offensichtlich nicht reicht. Die „Glücksformel” Haben + Lieben + Sein aus dem Buch fasst das gut zusammen: Materielles ist nur ein Drittel davon. Ich denke deshalb: Messbar sind höchstens die Umstände – das Glück selbst bleibt individuell und lässt sich in keiner Statistik komplett abbilden.",
@@ -79,6 +85,7 @@ const quotes: Quote[] = [
     title: "„Ist Glücklichsein lernbar?”",
     source: "Buch S. 103",
     image: "/portfolio/latte-art.jpg",
+    theme: "latte",
     alt: "Latte Art mit Rosetta-Muster in einer Tasse",
     caption: "Latte Art – durch Wiederholung besser",
     personal: true,
@@ -92,6 +99,7 @@ const quotes: Quote[] = [
     title: "„Glück ist nur dann real, wenn man es teilt!”",
     source: "Buch S. 104",
     image: "/portfolio/friends.jpg",
+    theme: "friends",
     alt: "Freunde gemeinsam unterwegs bei einer Ausfahrt",
     caption: "Ein Moment mit Freunden schlägt jeden Like",
     statement:
@@ -104,7 +112,8 @@ const quotes: Quote[] = [
     title: "„Auch unglücklich sein kann Glück bedeuten!”",
     source: "Buch S. 105",
     image: "/portfolio/moody.jpg",
-    alt: "Dramatischer Himmel mit Regenwolken und etwas Sonne",
+    theme: "moody",
+    alt: "Radfahrer unter einem dramatischen Abendhimmel",
     caption: "Erst der Kontrast macht die guten Momente wertvoll",
     statement:
       "Auf den ersten Blick klingt das Zitat widersprüchlich – wie soll Unglücklichsein bitte Glück bedeuten? Der Text von Wilhelm Schmid zeigt aber, dass Melancholie („tristitia sublima”) eine wertvolle Seite hat: Sie macht sensibel, nachdenklich und oft kreativ. Viele der größten Kunstwerke, etwa von Beethoven, sind gerade nicht aus purer Zufriedenheit entstanden. Ich verstehe das so: Ohne Tiefpunkte könnte man Höhepunkte gar nicht als solche erkennen. Frust nach einem schlechten Training oder misslungenen Versuchen ist unangenehm – aber genau dieser Frust motiviert mich, besser zu werden. Wer dagegen krampfhaft versucht, immer glücklich zu sein, setzt sich nur unter Druck und scheitert daran erst recht. Traurige Phasen gehören zum Leben dazu und sind kein Zeichen von Versagen. Dauerglück wäre am Ende sogar langweilig – erst der Kontrast macht die glücklichen Momente wertvoll.",
@@ -180,8 +189,11 @@ export default function PortfolioPage() {
         {quotes.map((q) => (
           <article className="pf-quote" id={q.id} key={q.id}>
             <figure className="pf-figure">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={q.image} alt={q.alt} loading="lazy" />
+              <PhotoOrPoster
+                src={q.image}
+                alt={q.alt}
+                theme={q.theme}
+              />
               <figcaption>{q.caption}</figcaption>
               {q.personal && (
                 <span className="pf-swap">Hier dein eigenes Foto</span>
@@ -239,11 +251,10 @@ export default function PortfolioPage() {
 
         {/* Fazit */}
         <section className="pf-fazit" aria-label="Fazit">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <PhotoOrPoster
             src="/portfolio/cycling.jpg"
             alt="Ausfahrt mit dem Rennrad in der Abendsonne"
-            loading="lazy"
+            theme="sunset-road"
           />
           <div className="pf-fazit-body">
             <span className="pf-eyebrow">Mein Fazit</span>
